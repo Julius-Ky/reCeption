@@ -1,9 +1,9 @@
-# reCeption
+# reCEPTION
 
 > **Web3.0 reCAPTCHA**
 
-reCeption is an `**AI-powered security platform**` that offers functionality similar to **reCAPTCHA**, providing automated verification solutions for both `**Web2 and Web3 environments**`. 
-The project aims to enhance the `security` and `quality of smart contracts` and `provide automated validation solutions for users and developers`.
+reCEPTION is an **`AI-powered security platform`** that offers functionality similar to **reCAPTCHA**, providing automated verification solutions for both **`Web2 and Web3 environments`**. 
+The project aims to enhance the **`security`** and **`quality of smart contracts`** and **`provide automated validation solutions for users and developers`**.
 
 ## Key Features
 1. **AI-Based Smart Contract Analysis**:
@@ -29,7 +29,7 @@ We are different from them.
 ![Wallet Guard](https://cdn.prod.website-files.com/653c60995304b515c2f8f3f6/65a758a1767a906d4ebcde44_wallet%20guard%20logo.png)
 ![AnChain.AI](https://github.com/user-attachments/assets/ca988dbf-b869-4524-a7ff-127a3618ae4d)
 
-- We do not secure the wallet itself, but the `**contract code itself**`.
-- We do not detect transactions that occur through contracts via AI by being installed in the wallet itself, but we analyze the contract code itself that generates transactions by loading the contract code `**from the website itself through AI**`.
-- We are not restricted by the wallet, and we analyze only the contract code itself to find vulnerabilities in the code and inform the user of the presence or absence of transactions. Furthermore, if we `**modify and supplement the contract code, we provide a report on the analysis results to prevent secondary crimes**`.
-- Even if users do not download our service separately as a browser extension or wallet snap, if the `**website admin generally install**` and operate our `**API service**`, anyone can easily use our service to make `safe transactions`.
+- We do not secure the wallet itself, but the **`contract code itself`**.
+- We do not detect transactions that occur through contracts via AI by being installed in the wallet itself, but we analyze the contract code itself that generates transactions by loading the contract code **`from the website itself through AI`**.
+- We are not restricted by the wallet, and we analyze only the contract code itself to find vulnerabilities in the code and inform the user of the presence or absence of transactions. Furthermore, if we **`modify and supplement the contract code, we provide a report on the analysis results to prevent secondary crimes`**.
+- Even if users do not download our service separately as a browser extension or wallet snap, if the **`website admin generally install`** and operate our **`API service`**, anyone can easily use our service to make **`safe transactions`**.
