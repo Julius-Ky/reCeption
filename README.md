@@ -1,6 +1,4 @@
-# reCEPTION
-
-> **Web3.0 reCAPTCHA**
+# reCEPTION (Web3.0 reCAPTCHA)
 
 reCEPTION is an **`AI-powered security platform`** that offers functionality similar to **reCAPTCHA**, providing automated verification solutions for both **`Web2 and Web3 environments`**. 
 The project aims to enhance the **`security`** and **`quality of smart contracts`** and **`provide automated validation solutions for users and developers`**.
