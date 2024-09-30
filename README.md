@@ -1,3 +1,5 @@
+![reCEPTION](https://github.com/user-attachments/assets/775b68ac-564e-42fb-b7d5-177943ed8995)
+
 # reCEPTION (Web3.0 reCAPTCHA)
 
 reCEPTION is an **`AI-powered security platform`** that offers functionality similar to **reCAPTCHA**, providing automated verification solutions for both **`Web2 and Web3 environments`**. 
