@@ -42,6 +42,18 @@ E-Commerce -->> E-Commerce: Response payment
 E-Commerce ->> NEAR: 8. Save contract data (Normal/Abnormal Classification)
 ```
 
+1. **Login**: The user logs into the E-Commerce platform.
+   - **Response the user info**: The E-Commerce platform processes the logged-in user information.
+2. **Product Purchase**: The user purchases a product using cryptocurrency.
+3. **Send Smart Contract**: The E-Commerce platform sends the smart contract for payment to reCeption.
+4. **Smart Contract Analysis**: reCeption analyzes the smart contract using NEAR AI.
+   - **Smart contract data save**: NEAR saves the not analysis and analyzed smart contract data.
+5. **Return Analysis result**: NEAR returns the analysis result to reCeption.
+6. **Return Safety Judgment**: reCeption sends the safety judgment result back to the user.
+7. **Share whether to run**: The user decides the next step via a checkbox or payment approval.
+   - **Response payment**: The E-Commerce platform internally processes the payment response.
+8. **Save contract data**: The E-Commerce platform saves the smart contract data on NEAR, categorized as normal/abnormal.
+
 ### Platform Journey
 ```mermaid
 graph TD;
