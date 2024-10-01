@@ -21,6 +21,7 @@ The project aims to enhance the **`security`** and **`quality of smart contracts
     - Offers API access to analysis results and data, enabling e-commerce platforms or Web3 applications to use these as security solutions.
   
 ## Process
+### reCEPTION Process
 ```mermaid
 sequenceDiagram
 participant User
