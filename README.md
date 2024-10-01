@@ -43,7 +43,20 @@ E-Commerce ->> NEAR: 8. Save contract data (Normal/Abnormal Classification)
 ```
 
 ### Platform Journey
-
+```mermaid
+graph TD;
+    Sign-In/Sign-Up-->File-Upload;
+    Sign-In/Sign-Up-->Copy/Paste-Text;
+    Copy/Paste-Text-->AI-Analysis;
+    File-Upload-->AI-Analysis;
+    AI-Analysis-->Result;
+    Result-->File-Download;
+    Result-->Auto-Deploy;
+    Result-->Re-Analysis;
+    Re-Analysis-->AI-Analysis;
+    File-Download-->Display-the-History;
+    Auto-Deploy-->Display-the-History;
+```
 
 ## Competition
 We are different from them.
