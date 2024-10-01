@@ -21,7 +21,7 @@ The project aims to enhance the **`security`** and **`quality of smart contracts
     - Offers API access to analysis results and data, enabling e-commerce platforms or Web3 applications to use these as security solutions.
   
 ## Process
-### reCEPTION Process
+### reCEPTION Journey
 ```mermaid
 sequenceDiagram
 participant User
@@ -41,6 +41,9 @@ User ->> E-Commerce: 7. Share whether to run (Check Box or Payment Approve)
 E-Commerce -->> E-Commerce: Response payment
 E-Commerce ->> NEAR: 8. Save contract data (Normal/Abnormal Classification)
 ```
+
+### Platform Journey
+
 
 ## Competition
 We are different from them.
