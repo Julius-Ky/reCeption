@@ -21,7 +21,25 @@ The project aims to enhance the **`security`** and **`quality of smart contracts
     - Offers API access to analysis results and data, enabling e-commerce platforms or Web3 applications to use these as security solutions.
   
 ## Process
-![image](https://github.com/user-attachments/assets/098378d5-1e8d-451f-b2da-1d2a2d6951f0)
+```mermaid
+sequenceDiagram
+participant User
+participant E-Commerce as E-Commerce (Platform)
+participant reCeption
+participant NEAR
+
+User ->> E-Commerce: 1. Login
+E-Commerce -->> E-Commerce: Response the user info
+User ->> E-Commerce: 2. Product Purchase (Cryptocurrency)
+E-Commerce ->> reCeption: 3. Send Smart Contract (Payment)
+reCeption ->> NEAR: 4. Smart Contract Analysis (NEAR AI)
+NEAR -->> NEAR: Smart contract data save
+NEAR ->> reCeption: 5. Return Analysis result
+reCeption ->> User: 6. Return Safety Judgment
+User ->> E-Commerce: 7. Share whether to run (Check Box or Payment Approve)
+E-Commerce -->> E-Commerce: Response payment
+E-Commerce ->> NEAR: 8. Save contract data (Normal/Abnormal Classification)
+```
 
 ## Competition
 We are different from them.
