@@ -7,6 +7,9 @@ The project aims to enhance the **`security`** and **`quality of smart contracts
 
 [reCEPTION Platform]() | [Demo Video]() | [Contract]()
 
+### Reference training data
+- [A survey of attacks on Ethereum smart contracts](https://drive.google.com/file/d/1iKK2nI9jQnyWflCkc1lR0q_pRUKyD5wk/view?usp=sharing)
+
 ## Key Features
 1. **AI-Based Smart Contract Analysis**:
     - Users upload their smart contract code for analysis, where AI identifies security vulnerabilities, code flaws, and potential scams.
