@@ -73,7 +73,7 @@ graph TD;
 ```
 
 ## Competition
-We are different from them.
+>**❗**We are different from them.
 
 <a href="https://www.walletguard.app/" height="5" width="10" target="_blank">
 	<img src="https://cdn.prod.website-files.com/653c60995304b515c2f8f3f6/65a758a1767a906d4ebcde44_wallet%20guard%20logo.png" width="200" height="60">
