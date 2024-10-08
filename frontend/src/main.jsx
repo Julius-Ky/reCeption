@@ -5,7 +5,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/root/Root.jsx";
 import ErrorPage from "./routes/ErrorPage.jsx";
 import Index from "./routes/index/Index.jsx";
-
 import { BitteWalletContextProvider } from "@mintbase-js/react";
 import "@near-wallet-selector/modal-ui/styles.css";
 

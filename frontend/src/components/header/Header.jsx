@@ -3,9 +3,16 @@ import Button from "../button/Button";
 import styles from "./Header.module.css";
 import { NavLink } from "react-router-dom";
 import { useBitteWallet } from "@mintbase-js/react";
+import { useEffect, useState } from "react";
+import { getBalance } from "@mintbase-js/rpc";
+import BN from "bn.js";
+
+const RPC_URL = "https://rpc.testnet.near.org";
+const YOCTO_NEAR = new BN("1000000000000000000000000"); // 10^24
 
 const Header = () => {
   const { isConnected, selector, connect, activeAccountId } = useBitteWallet();
+  const [balance, setBalance] = useState(null);
 
   const handleSignout = async () => {
     const wallet = await selector.wallet();
@@ -15,6 +22,24 @@ const Header = () => {
   const handleSignIn = async () => {
     return connect();
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (isConnected) {
+        const balanceData = await getBalance({
+          accountId: activeAccountId,
+          rpcUrl: RPC_URL,
+        });
+        // Convert the balance to NEAR
+        const balanceInNear = new BN(balanceData).div(YOCTO_NEAR).toString();
+        setBalance(balanceInNear);
+        console.log("balance (in NEAR):", balanceInNear);
+      }
+    };
+
+    fetchData();
+  }, [isConnected, activeAccountId]);
+
   return (
     <header>
       <nav className={styles.container}>
@@ -39,12 +64,21 @@ const Header = () => {
               <NavLink to="">FAQ</NavLink>
             </li>
           </ul>
-          {!isConnected && <Button label={"Connect"} onClick={handleSignIn} />}
-          {isConnected && (
-            <Button label={"Disconnect"} onClick={handleSignout} />
+          {!isConnected ? (
+            <Button label={"Connect"} onClick={handleSignIn} />
+          ) : (
+            <div className={styles.buttons}>
+              <p className={styles.balance}>
+                {balance ? `${balance} NEAR` : "Fetching balance..."}
+              </p>
+              <Button
+                type="primary"
+                label={activeAccountId}
+                onClick={handleSignout}
+              />
+            </div>
           )}
         </div>
-        {isConnected && <p>You are connected as {activeAccountId}</p>}
       </nav>
     </header>
   );

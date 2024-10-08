@@ -31,3 +31,15 @@
   align-items: center;
   gap: 20px;
 }
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.balance {
+  composes: btn from "../button/Button.module.css";
+  /* background-color: transparent; */
+  /* color: var(--primary-color-1); */
+}
