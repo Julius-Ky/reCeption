@@ -47,6 +47,7 @@ const Features = () => {
         {featuresData.map((feature, index) => (
           <Card
             key={index}
+            iconPosition="left"
             icon={feature.icon}
             title={feature.title}
             desc={feature.desc}

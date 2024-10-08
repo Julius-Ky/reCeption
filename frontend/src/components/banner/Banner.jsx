@@ -1,5 +1,5 @@
 import styles from "./Banner.module.css";
-import bannerImg from "../../assets/smart-sec.png";
+import bannerImg from "../../assets/robot.png";
 import Button from "../button/Button";
 
 const Banner = () => {
