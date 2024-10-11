@@ -2,7 +2,7 @@
 
 Contents
 - [Overview](https://github.com/Julius-Ky/reCeption/main/README.md#[reCEPTION](https://reception-seven.vercel.app/) (Web3.0 reCAPTCHA))
-- [Key Features](https://github.com/Julius-Ky/reCeption/main/README.md#key-features)
+- [Key Features](https://github.com/Julius-Ky/reCeption/blob/main/README.md#key-features)
 
 # [reCEPTION](https://reception-seven.vercel.app/) (Web3.0 reCAPTCHA)
 
