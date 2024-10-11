@@ -26,8 +26,10 @@ The project aims to enhance the **`security`** and **`quality of smart contracts
     - Supports reCAPTCHA-like functionality for security validation on web pages.
 5. **API Provision**:
     - Offers API access to analysis results and data, enabling e-commerce platforms or Web3 applications to use these as security solutions.
-  
-## Process
+
+## Model Process
+
+## Journey
 ### reCEPTION Journey
 ```mermaid
 sequenceDiagram
