@@ -1,5 +1,9 @@
 ![reCEPTION](https://github.com/user-attachments/assets/775b68ac-564e-42fb-b7d5-177943ed8995)
 
+Contents
+- [Overview](https://github.com/Julius-Ky/reCeption/main/README.md#[reCEPTION](https://reception-seven.vercel.app/) (Web3.0 reCAPTCHA))
+- [Key Features](https://github.com/Julius-Ky/reCeption/main/README.md#key-features)
+
 # [reCEPTION](https://reception-seven.vercel.app/) (Web3.0 reCAPTCHA)
 
 reCEPTION is an **`AI-powered security platform`** that offers functionality similar to **reCAPTCHA**, providing automated verification solutions for both **`Web2 and Web3 environments`**. 
@@ -30,7 +34,7 @@ The project aims to enhance the **`security`** and **`quality of smart contracts
 ## Model Process
 
 ## Journey
-### reCEPTION Journey
+### reCEPTION Diagram
 ```mermaid
 sequenceDiagram
 participant User
@@ -64,6 +68,9 @@ E-Commerce ->> NEAR: 8. Save contract data (Normal/Abnormal Classification)
 8. **Save contract data**: The E-Commerce platform saves the smart contract data on NEAR, categorized as normal/abnormal.
 
 ### Platform Journey
+![image](https://github.com/user-attachments/assets/503aca13-2084-4870-b88c-4acb323f1fcb)
+
+### User Journey
 ```mermaid
 graph TD;
     Sign-In/Sign-Up-->File-Upload;
