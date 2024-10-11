@@ -1,15 +1,18 @@
 ![reCEPTION](https://github.com/user-attachments/assets/775b68ac-564e-42fb-b7d5-177943ed8995)
 
-Contents
-- [Overview](https://github.com/Julius-Ky/reCeption/main/README.md#[reCEPTION](https://reception-seven.vercel.app/) (Web3.0 reCAPTCHA))
+# Contents
+- [Over view](https://github.com/Julius-Ky/reCeption/blob/main/README.md#reception-web30-recaptcha)
 - [Key Features](https://github.com/Julius-Ky/reCeption/blob/main/README.md#key-features)
+- [Model Process](https://github.com/Julius-Ky/reCeption/blob/main/README.md#model-process)
+- [Journey](https://github.com/Julius-Ky/reCeption/blob/main/README.md#Journey)
+- [Competition](https://github.com/Julius-Ky/reCeption/blob/main/README.md#Competition)
 
-# [reCEPTION](https://reception-seven.vercel.app/) (Web3.0 reCAPTCHA)
+## [reCEPTION](https://reception-seven.vercel.app/) (Web3.0 reCAPTCHA)
 
 reCEPTION is an **`AI-powered security platform`** that offers functionality similar to **reCAPTCHA**, providing automated verification solutions for both **`Web2 and Web3 environments`**. 
 The project aims to enhance the **`security`** and **`quality of smart contracts`** and **`provide automated validation solutions for users and developers`**.
 
-[Demo Video]() | [Contract]()
+[Demo Video]() | [Smart Contract]()
 
 ### Reference training data
 - [A survey of attacks on Ethereum smart contracts](https://drive.google.com/file/d/1iKK2nI9jQnyWflCkc1lR0q_pRUKyD5wk/view?usp=sharing)
