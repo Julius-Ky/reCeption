@@ -1,11 +1,11 @@
 ![reCEPTION](https://github.com/user-attachments/assets/775b68ac-564e-42fb-b7d5-177943ed8995)
 
-# reCEPTION (Web3.0 reCAPTCHA)
+# [reCEPTION](https://reception-seven.vercel.app/) (Web3.0 reCAPTCHA)
 
 reCEPTION is an **`AI-powered security platform`** that offers functionality similar to **reCAPTCHA**, providing automated verification solutions for both **`Web2 and Web3 environments`**. 
 The project aims to enhance the **`security`** and **`quality of smart contracts`** and **`provide automated validation solutions for users and developers`**.
 
-[reCEPTION Platform](https://reception-seven.vercel.app/) | [Demo Video]() | [Contract]()
+[Demo Video]() | [Contract]()
 
 ### Reference training data
 - [A survey of attacks on Ethereum smart contracts](https://drive.google.com/file/d/1iKK2nI9jQnyWflCkc1lR0q_pRUKyD5wk/view?usp=sharing)
