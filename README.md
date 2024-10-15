@@ -91,13 +91,13 @@ graph TD;
 ```
 
 ## Competition
->**❗**We are different from them.
-
 <a href="https://www.walletguard.app/" height="5" width="10" target="_blank">
 	<img src="https://cdn.prod.website-files.com/653c60995304b515c2f8f3f6/65a758a1767a906d4ebcde44_wallet%20guard%20logo.png" width="200" height="60">
 <a><a href="https://www.anchain.ai/" height="5" width="10" target="_blank">
 	<img src="https://github.com/user-attachments/assets/ca988dbf-b869-4524-a7ff-127a3618ae4d" width="200" height="35">
-<a>
+<a><br></br>
+
+> We are different from them.
 
 - We do not secure the wallet itself, but the **`contract code itself`**.
 - We do not detect transactions that occur through contracts via AI by being installed in the wallet itself, but we analyze the contract code itself that generates transactions by loading the contract code **`from the website itself through AI`**.
