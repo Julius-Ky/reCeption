@@ -18,6 +18,7 @@ The project aims to enhance the **`security`** and **`quality of smart contracts
 - [A survey of attacks on Ethereum smart contracts](https://drive.google.com/file/d/1iKK2nI9jQnyWflCkc1lR0q_pRUKyD5wk/view?usp=sharing)
 - [Vulnerabilities #1](https://kadenzipfel.github.io/smart-contract-vulnerabilities/)
 - [Vulnerabilities #2](https://arxiv.org/html/2409.02139v1)
+- [Vulnerabilities #3](https://www.4byte.directory/)
 
 ## Key Features
 1. **AI-Based Smart Contract Analysis**:
