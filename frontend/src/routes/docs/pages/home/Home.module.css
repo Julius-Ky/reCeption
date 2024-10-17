@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section h1 {
+  font-size: 2rem;
+}
+.section h2 {
+  font-size: 1.5rem;
+}
+
+.heroImage {
+  background-color: var(--Accent3);
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.navigation {
+  align-self: flex-end;
+}

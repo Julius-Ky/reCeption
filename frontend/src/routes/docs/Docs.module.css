@@ -1,0 +1,9 @@
+.docs {
+  display: flex;
+  gap: 32px;
+}
+
+.contents {
+  flex: 1;
+  margin-left: 332px;
+}

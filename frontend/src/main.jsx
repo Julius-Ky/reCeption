@@ -7,6 +7,8 @@ import ErrorPage from "./routes/ErrorPage.jsx";
 import Index from "./routes/index/Index.jsx";
 import { BitteWalletContextProvider } from "@mintbase-js/react";
 import "@near-wallet-selector/modal-ui/styles.css";
+import Docs from "./routes/docs/Docs.jsx";
+import Home from "./routes/docs/pages/home/Home.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,16 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Index />,
+      },
+      {
+        path: "docs",
+        element: <Docs />,
+        children: [
+          {
+            index: true,
+            element: <Home />,
+          },
+        ],
       },
     ],
   },

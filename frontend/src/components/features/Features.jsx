@@ -5,6 +5,7 @@ import {
   Code2,
   MonitorSmartphone,
   ShieldCheck,
+  UserCheck2,
 } from "lucide-react";
 
 const Features = () => {
@@ -30,14 +31,9 @@ const Features = () => {
       desc: "Simple code upload and real-time feedback for an intuitive user experience.",
     },
     {
-      icon: <Code2 size={40} strokeWidth={2} absoluteStrokeWidth />,
-      title: "Code Improvement",
-      desc: "Apply security patches and optimize performance automatically based on analysis.",
-    },
-    {
-      icon: <BadgeAlert size={40} strokeWidth={2} absoluteStrokeWidth />,
-      title: "Detailed Reporting",
-      desc: "Get clear, actionable reports with explanations of issues and fixes applied.",
+      icon: <UserCheck2 />,
+      title: "Admin Console",
+      desc: "As an admin, setup and manage reCeption features on your website.",
     },
   ];
   return (

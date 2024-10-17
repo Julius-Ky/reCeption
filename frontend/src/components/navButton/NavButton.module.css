@@ -1,0 +1,28 @@
+.navLink {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 2px solid var(--Accent2);
+  width: 300px;
+  align-items: flex-end;
+}
+
+.small {
+  font-size: 0.8rem;
+}
+
+.big {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.navLink:hover {
+  border-color: var(--primary-color-1);
+  color: inherit;
+}
+
+.navLink:hover .big {
+  color: var(--primary-color-1);
+}

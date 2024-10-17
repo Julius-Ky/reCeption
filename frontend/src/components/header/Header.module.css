@@ -36,10 +36,22 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  position: relative;
 }
 
 .balance {
   composes: btn from "../button/Button.module.css";
   /* background-color: transparent; */
   /* color: var(--primary-color-1); */
+}
+
+.active {
+  color: var(--primary-color-1);
+  font-weight: 500;
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  bottom: -130px;
 }
