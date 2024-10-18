@@ -3,6 +3,7 @@ import styles from "./Features.module.css";
 import {
   BadgeAlert,
   Code2,
+  LucideFileKey2,
   MonitorSmartphone,
   ShieldCheck,
   UserCheck2,
@@ -34,6 +35,11 @@ const Features = () => {
       icon: <UserCheck2 />,
       title: "Admin Console",
       desc: "As an admin, setup and manage reCeption features on your website.",
+    },
+    {
+      icon: <LucideFileKey2 />,
+      title: "reCeption API",
+      desc: "Integrate reCeption API with your application to provide automated verification solutions for your users.",
     },
   ];
   return (

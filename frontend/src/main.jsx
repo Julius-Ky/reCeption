@@ -9,6 +9,7 @@ import { BitteWalletContextProvider } from "@mintbase-js/react";
 import "@near-wallet-selector/modal-ui/styles.css";
 import Docs from "./routes/docs/Docs.jsx";
 import Home from "./routes/docs/pages/home/Home.jsx";
+import Upload from "./routes/upload/Upload.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             element: <Home />,
           },
         ],
+      },
+      {
+        path: "upload",
+        element: <Upload />,
       },
     ],
   },

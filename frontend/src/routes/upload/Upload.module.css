@@ -1,0 +1,41 @@
+.upload {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 0 32px 48px;
+}
+
+.heroImage {
+  height: inherit;
+  background-color: var(--Accent3);
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.center {
+  text-align: center;
+}
+
+.navs {
+  display: flex;
+  margin: 20px 80px;
+}
+.btn {
+  padding: 8px;
+  flex: 1;
+  border: none;
+  background-color: var(--Accent3);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--Accent2);
+}
+
+.active {
+  font-weight: 500;
+  border-bottom: 1px solid var(--secondary-color-2);
+  background-color: var(--Accent2);
+}

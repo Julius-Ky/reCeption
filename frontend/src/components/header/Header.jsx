@@ -1,6 +1,6 @@
 import logo from "../../assets/logo.jpg";
 import Button from "../button/Button";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useBitteWallet } from "@mintbase-js/react";
 import { useEffect, useState } from "react";
 import { getBalance } from "@mintbase-js/rpc";
@@ -16,6 +16,8 @@ const Header = () => {
   const [balance, setBalance] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleSignout = async () => {
     const wallet = await selector.wallet();
     return wallet.signOut();
@@ -27,6 +29,11 @@ const Header = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const onUpload = () => {
+    navigate("/upload");
+    setIsMenuOpen(false);
   };
 
   useEffect(() => {
@@ -102,7 +109,7 @@ const Header = () => {
               />
               {isMenuOpen && (
                 <div className={styles.menu}>
-                  <Menu onLogout={handleSignout} />
+                  <Menu onLogout={handleSignout} onUpload={onUpload} />
                 </div>
               )}
             </div>

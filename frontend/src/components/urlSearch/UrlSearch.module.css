@@ -1,0 +1,20 @@
+.search {
+  composes: upload from "../fileUpload/FileUpload.module.css";
+  padding: 0 80px 48px;
+}
+
+.icon {
+  composes: icon from "../fileUpload/FileUpload.module.css";
+}
+
+.input {
+  width: 100%;
+  padding: 8px 16px;
+  border: 1px solid var(--primary-color-2);
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.input:focus {
+  outline-color: var(--primary-color-2);
+}
