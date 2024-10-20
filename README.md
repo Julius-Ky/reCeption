@@ -51,7 +51,7 @@ E-Commerce -->> E-Commerce: Response the user info
 User ->> E-Commerce: 2. Product Purchase (Cryptocurrency)
 E-Commerce ->> reCeption: 3. Send Smart Contract (Payment)
 reCeption ->> NEAR: 4. Smart Contract Analysis (NEAR AI)
-NEAR -->> NEAR: Smart contract data save
+NEAR -->> NEAR: Handles verification & fee charges for interactions
 NEAR ->> reCeption: 5. Return Analysis result
 reCeption ->> User: 6. Return Safety Judgment
 User ->> E-Commerce: 7. Share whether to run (Check Box or Payment Approve)
