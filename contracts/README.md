@@ -1,6 +1,6 @@
 # Reception Contract
 
-The smart contract exposes five methods to enable storing and retrieving a reception interactions in the NEAR network.
+The smart contract exposes five methods to enable storing and retrieving a reCeption interactions in the NEAR network.
 
 ```ts
 @NearBindgen({})
@@ -100,3 +100,66 @@ near deploy <your-account.testnet> build/release/reception.wasm
 ```
 
 <br />
+
+## 3. Retrieve the Owner and Fee
+
+`get_owner` and `get_fee` are a read-only method (aka `view` method).
+
+`View` methods can be called for **free** by anyone, even people **without a NEAR account**!
+
+```bash
+# Use near-cli to get the owner
+near view <your-account.testnet> get_owner
+# Use near-cli to get the fee
+near view <your-account.testnet> get_fee
+```
+
+<br />
+
+## 4. Setting Fee
+
+`set_fee` changes the contract's state, for which it is a `call` method.
+
+`Call` methods can only be invoked using a NEAR account, since the account needs to pay GAS for the transaction.
+
+```bash
+# Use near-cli to set a new greeting
+near call <your-account.testnet> set_fee '{"caller": "admin.test.near", "new_fee": "2000000"}' --accountId <your-account.testnet>
+```
+
+<br />
+
+## 5. Sign Interactions
+
+`sign_interaction` changes the contract's state, for which it is a `call` method.
+
+`Call` methods can only be invoked using a NEAR account, since the account needs to pay GAS for the transaction.
+
+```bash
+# Use near-cli to set a new greeting
+near call <your-account.testnet> sign_interaction '{"user_id": "alice.test.near", "vulnerability_type": "Reentrancy", "network":"Ethereum"}' --accountId <your-account.testnet>
+```
+
+<br />
+
+## 6. Retrieve a User Interactions
+
+`get_interactions_by_user_id` is a read-only method (aka `view` method).
+
+`View` methods can be called for **free** by anyone, even people **without a NEAR account**!
+
+```bash
+# Use near-cli to get the owner
+near view <your-account.testnet> get_interactions_by_user_id '{"user_id":"alice.test.near"}'
+```
+
+<br />
+
+**Tip:** If you would like to view or make calls using another account, first login into NEAR using:
+
+```bash
+# Use near-cli to login your NEAR account
+near login
+```
+
+and then use the logged account to sign the transaction: `--accountId <another-account>`.
