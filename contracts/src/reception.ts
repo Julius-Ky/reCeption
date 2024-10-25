@@ -16,6 +16,7 @@ class ReCeption {
   private interactions: UnorderedMap<string[]> = new UnorderedMap<string[]>(
     "i"
   );
+  private api_users: UnorderedMap<boolean> = new UnorderedMap<boolean>("a");
 
   @view({})
   get_owner(): string {
@@ -39,15 +40,6 @@ class ReCeption {
   @view({})
   get_fee(): bigint {
     return this.fee;
-  }
-
-  @view({})
-  get_interactions_by_user_id({
-    user_id,
-  }: {
-    user_id: string;
-  }): string[] | null {
-    return this.interactions.get(user_id);
   }
 
   @call({})
@@ -77,5 +69,29 @@ class ReCeption {
     } else {
       near.log(`Maximum interactions limit reached`);
     }
+  }
+
+  @view({})
+  get_interactions_by_user_id({
+    user_id,
+  }: {
+    user_id: string;
+  }): string[] | null {
+    return this.interactions.get(user_id);
+  }
+
+  @call({})
+  authorize_api_user({ user_id }: { user_id: string }): void {
+    if (user_id.length < this.MAX_INPUT_LENGTH) {
+      this.api_users.set(user_id, true);
+      near.log(`The api user ${user_id} is authorized`);
+    } else {
+      near.log(`Invalid user_id length`);
+    }
+  }
+
+  @view({})
+  get_api_user_authority({ user_id }: { user_id: string }): boolean | false {
+    return this.api_users.get(user_id);
   }
 }

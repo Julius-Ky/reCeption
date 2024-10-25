@@ -7,9 +7,12 @@ The smart contract exposes five methods to enable storing and retrieving a reCep
 class ReCeption {
   private owner: string = "admin.test.near";
   private fee: bigint = BigInt(1000000);
+  private MAX_INTERACTIONS = 1000;
+  private MAX_INPUT_LENGTH = 256;
   private interactions: UnorderedMap<string[]> = new UnorderedMap<string[]>(
     "i"
   );
+  private api_users: UnorderedMap<boolean> = new UnorderedMap<boolean>("a");
 
   @view({})
   get_owner(): string {
@@ -19,8 +22,12 @@ class ReCeption {
   @call({})
   set_fee({ caller, new_fee }: { caller: string; new_fee: bigint }): void {
     if (caller === this.owner) {
-      this.fee = new_fee;
-      near.log(`Fee updated to: ${new_fee}`);
+      if (new_fee > 0) {
+        this.fee = new_fee;
+        near.log(`Fee updated to: ${new_fee}`);
+      } else {
+        near.log("Fee must be greater than 0");
+      }
     } else {
       near.log("Only the owner can set the fee");
     }
@@ -29,15 +36,6 @@ class ReCeption {
   @view({})
   get_fee(): bigint {
     return this.fee;
-  }
-
-  @view({})
-  get_interactions_by_user_id({
-    user_id,
-  }: {
-    user_id: string;
-  }): string[] | null {
-    return this.interactions.get(user_id);
   }
 
   @call({})
@@ -50,12 +48,47 @@ class ReCeption {
     vulnerability_type: string;
     network: string;
   }): void {
-    const interaction = `Vulnerability: ${vulnerability_type} | Network: ${network}`;
-
     let interactions = this.interactions.get(user_id) || [];
-    interactions.push(interaction);
-    this.interactions.set(user_id, interactions);
-    near.log(`Interaction signed and stored for ${user_id}`);
+    if (interactions.length < this.MAX_INTERACTIONS) {
+      if (
+        user_id.length < this.MAX_INPUT_LENGTH &&
+        vulnerability_type.length < this.MAX_INPUT_LENGTH &&
+        network.length < this.MAX_INPUT_LENGTH
+      ) {
+        const interaction = `Vulnerability: ${vulnerability_type} | Network: ${network}`;
+        interactions.push(interaction);
+        this.interactions.set(user_id, interactions);
+        near.log(`Interaction signed and stored for ${user_id}`);
+      } else {
+        near.log(`Invalid parameters length`);
+      }
+    } else {
+      near.log(`Maximum interactions limit reached`);
+    }
+  }
+
+  @view({})
+  get_interactions_by_user_id({
+    user_id,
+  }: {
+    user_id: string;
+  }): string[] | null {
+    return this.interactions.get(user_id);
+  }
+
+  @call({})
+  authorize_api_user({ user_id }: { user_id: string }): void {
+    if (user_id.length < this.MAX_INPUT_LENGTH) {
+      this.api_users.set(user_id, true);
+      near.log(`The api user ${user_id} is authorized`);
+    } else {
+      near.log(`Invalid user_id length`);
+    }
+  }
+
+  @view({})
+  get_api_user_authority({ user_id }: { user_id: string }): boolean | false {
+    return this.api_users.get(user_id);
   }
 }
 ```
@@ -151,6 +184,32 @@ near call <your-account.testnet> sign_interaction '{"user_id": "alice.test.near"
 ```bash
 # Use near-cli to get user interactions
 near view <your-account.testnet> get_interactions_by_user_id '{"user_id":"alice.test.near"}'
+```
+
+<br />
+
+## 7. Authorize api user
+
+`authorize_api_user` changes the contract's state, for which it is a `call` method.
+
+`Call` methods can only be invoked using a NEAR account, since the account needs to pay GAS for the transaction.
+
+```bash
+# Use near-cli to authorize api user
+near call <your-account.testnet> authorize_api_user '{"user_id": "alice.test.near"}' --accountId <your-account.testnet>
+```
+
+<br />
+
+## 6. Retrieve api user authority
+
+`get_api_user_authority` is a read-only method (aka `view` method).
+
+`View` methods can be called for **free** by anyone, even people **without a NEAR account**!
+
+```bash
+# Use near-cli to get api user authority
+near view <your-account.testnet> get_api_user_authority '{"user_id":"alice.test.near"}'
 ```
 
 <br />

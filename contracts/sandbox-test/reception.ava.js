@@ -52,7 +52,7 @@ test("should return null if the interactions for a user are empty", async (t) =>
   t.is(interactions, null);
 });
 
-test("should sign interaction by user and retrieve it by user", async (t) => {
+test("should sign interaction by user id and retrieve it by user id", async (t) => {
   const { contract, user } = t.context.accounts;
   await contract.call(contract, "sign_interaction", {
     user_id: user._accountId,
@@ -70,4 +70,16 @@ test("should sign interaction by user and retrieve it by user", async (t) => {
   });
   console.log(`Interactions: ${interactions}`);
   t.not(interactions, null);
+});
+
+test("should authorize api user by id and retrieve the authority", async (t) => {
+  const { contract, user } = t.context.accounts;
+  await contract.call(contract, "authorize_api_user", {
+    user_id: user._accountId,
+  });
+  let authority = await contract.view("get_api_user_authority", {
+    user_id: user._accountId,
+  });
+  console.log(`The user authority status is ${authority}`);
+  t.is(authority, true);
 });
