@@ -96,7 +96,7 @@ You can create a new account and deploy the contract by running:
 
 ```bash
 near create-account <your-account.testnet> --useFaucet
-near deploy <your-account.testnet> build/release/reception.wasm
+near deploy <your-account.testnet> build/reception.wasm
 ```
 
 <br />
@@ -136,7 +136,7 @@ near call <your-account.testnet> set_fee '{"caller": "admin.test.near", "new_fee
 `Call` methods can only be invoked using a NEAR account, since the account needs to pay GAS for the transaction.
 
 ```bash
-# Use near-cli to sign an interaction
+# Use near-cli to sign user interaction
 near call <your-account.testnet> sign_interaction '{"user_id": "alice.test.near", "vulnerability_type": "Reentrancy", "network":"Ethereum"}' --accountId <your-account.testnet>
 ```
 
