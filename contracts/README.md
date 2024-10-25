@@ -123,7 +123,7 @@ near view <your-account.testnet> get_fee
 `Call` methods can only be invoked using a NEAR account, since the account needs to pay GAS for the transaction.
 
 ```bash
-# Use near-cli to set a new greeting
+# Use near-cli to set new fee
 near call <your-account.testnet> set_fee '{"caller": "admin.test.near", "new_fee": "2000000"}' --accountId <your-account.testnet>
 ```
 
@@ -136,20 +136,20 @@ near call <your-account.testnet> set_fee '{"caller": "admin.test.near", "new_fee
 `Call` methods can only be invoked using a NEAR account, since the account needs to pay GAS for the transaction.
 
 ```bash
-# Use near-cli to set a new greeting
+# Use near-cli to sign an interaction
 near call <your-account.testnet> sign_interaction '{"user_id": "alice.test.near", "vulnerability_type": "Reentrancy", "network":"Ethereum"}' --accountId <your-account.testnet>
 ```
 
 <br />
 
-## 6. Retrieve a User Interactions
+## 6. Retrieve User Interactions
 
 `get_interactions_by_user_id` is a read-only method (aka `view` method).
 
 `View` methods can be called for **free** by anyone, even people **without a NEAR account**!
 
 ```bash
-# Use near-cli to get the owner
+# Use near-cli to get user interactions
 near view <your-account.testnet> get_interactions_by_user_id '{"user_id":"alice.test.near"}'
 ```
 
