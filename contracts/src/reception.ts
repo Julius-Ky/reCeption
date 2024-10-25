@@ -8,9 +8,11 @@ import {
 } from "near-sdk-js";
 
 @NearBindgen({})
-class Reception {
+class ReCeption {
   private owner: string = "admin.test.near";
   private fee: bigint = BigInt(1000000);
+  private MAX_INTERACTIONS = 1000;
+  private MAX_INPUT_LENGTH = 256;
   private interactions: UnorderedMap<string[]> = new UnorderedMap<string[]>(
     "i"
   );
@@ -23,8 +25,12 @@ class Reception {
   @call({})
   set_fee({ caller, new_fee }: { caller: string; new_fee: bigint }): void {
     if (caller === this.owner) {
-      this.fee = new_fee;
-      near.log(`Fee updated to: ${new_fee}`);
+      if (new_fee > 0) {
+        this.fee = new_fee;
+        near.log(`Fee updated to: ${new_fee}`);
+      } else {
+        near.log("Fee must be greater than 0");
+      }
     } else {
       near.log("Only the owner can set the fee");
     }
@@ -54,11 +60,22 @@ class Reception {
     vulnerability_type: string;
     network: string;
   }): void {
-    const interaction = `Vulnerability: ${vulnerability_type} | Network: ${network}`;
-
     let interactions = this.interactions.get(user_id) || [];
-    interactions.push(interaction);
-    this.interactions.set(user_id, interactions);
-    near.log(`Interaction signed and stored for ${user_id}`);
+    if (interactions.length < this.MAX_INTERACTIONS) {
+      if (
+        user_id.length < this.MAX_INPUT_LENGTH &&
+        vulnerability_type.length < this.MAX_INPUT_LENGTH &&
+        network.length < this.MAX_INPUT_LENGTH
+      ) {
+        const interaction = `Vulnerability: ${vulnerability_type} | Network: ${network}`;
+        interactions.push(interaction);
+        this.interactions.set(user_id, interactions);
+        near.log(`Interaction signed and stored for ${user_id}`);
+      } else {
+        near.log(`Invalid parameters length`);
+      }
+    } else {
+      near.log(`Maximum interactions limit reached`);
+    }
   }
 }

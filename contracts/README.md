@@ -1,10 +1,10 @@
-# Reception Contract
+# ReCeption Contract
 
 The smart contract exposes five methods to enable storing and retrieving a reCeption interactions in the NEAR network.
 
 ```ts
 @NearBindgen({})
-class Reception {
+class ReCeption {
   private owner: string = "admin.test.near";
   private fee: bigint = BigInt(1000000);
   private interactions: UnorderedMap<string[]> = new UnorderedMap<string[]>(
