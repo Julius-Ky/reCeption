@@ -1,7 +1,9 @@
 import { FileUp } from "lucide-react";
 import styles from "./FileUpload.module.css";
+import Button from "../button/Button";
+import PropTypes from "prop-types";
 
-const FileUpload = () => {
+const FileUpload = ({ handleUpload }) => {
   return (
     <div className={styles.upload}>
       <div className={styles.icon}>
@@ -11,8 +13,13 @@ const FileUpload = () => {
         <input type="file" />
         <span>Choose a file</span>
       </label>
+      <Button label="Upload" onClick={handleUpload} />
     </div>
   );
+};
+
+FileUpload.propTypes = {
+  handleUpload: PropTypes.func.isRequired,
 };
 
 export default FileUpload;

@@ -1,57 +1,39 @@
 import logo from "../../assets/logo.jpg";
 import Button from "../button/Button";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useBitteWallet } from "@mintbase-js/react";
-import { useEffect, useState } from "react";
-import { getBalance } from "@mintbase-js/rpc";
-import BN from "bn.js";
+import { useState } from "react";
 import styles from "./Header.module.css";
 import Menu from "../menu/Menu";
-
-const RPC_URL = "https://rpc.testnet.near.org";
-const YOCTO_NEAR = new BN("1000000000000000000000000"); // 10^24
+import useWallet from "../../hooks/useWallet";
 
 const Header = () => {
-  const { isConnected, selector, connect, activeAccountId } = useBitteWallet();
-  const [balance, setBalance] = useState(null);
+  const { wallet, isSignedIn, accountId, balance } = useWallet();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSignout = async () => {
-    const wallet = await selector.wallet();
-    return wallet.signOut();
+    await wallet.signOut();
+    setIsMenuOpen(false);
+    window.location.reload();
   };
 
   const handleSignIn = async () => {
-    return connect();
+    return wallet.signIn();
   };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    if (wallet && wallet.fetchOwner) {
+      wallet.fetchOwner().then(console.log).catch(console.error);
+    }
   };
 
   const onUpload = () => {
     navigate("/upload");
     setIsMenuOpen(false);
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (isConnected) {
-        const balanceData = await getBalance({
-          accountId: activeAccountId,
-          rpcUrl: RPC_URL,
-        });
-        // Convert the balance to NEAR
-        const balanceInNear = new BN(balanceData).div(YOCTO_NEAR).toString();
-        setBalance(balanceInNear);
-        console.log("balance (in NEAR):", balanceInNear);
-      }
-    };
-
-    fetchData();
-  }, [isConnected, activeAccountId]);
 
   return (
     <header>
@@ -95,18 +77,14 @@ const Header = () => {
               </NavLink>
             </li>
           </ul>
-          {!isConnected ? (
+          {!isSignedIn ? (
             <Button label={"Connect"} onClick={handleSignIn} />
           ) : (
             <div className={styles.buttons}>
               <p className={styles.balance}>
                 {balance ? `${balance} NEAR` : "Fetching balance..."}
               </p>
-              <Button
-                type="primary"
-                label={activeAccountId}
-                onClick={toggleMenu}
-              />
+              <Button type="primary" label={accountId} onClick={toggleMenu} />
               {isMenuOpen && (
                 <div className={styles.menu}>
                   <Menu onLogout={handleSignout} onUpload={onUpload} />

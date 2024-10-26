@@ -4,12 +4,8 @@
     "emitDecoratorMetadata": true,
     "target": "ES5",
     "noEmit": true,
-    "noImplicitAny": false,
+    "noImplicitAny": false
   },
-  "files": [
-    "src/contract.ts","src/reception.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "files": ["src/contract.ts", "src/reception.ts"],
+  "exclude": ["node_modules"]
 }

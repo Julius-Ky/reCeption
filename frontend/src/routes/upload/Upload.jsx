@@ -3,13 +3,22 @@ import bannerImg from "../../assets/robot.png";
 import styles from "./Upload.module.css";
 import FileUpload from "../../components/fileUpload/FileUpload";
 import UrlSearch from "../../components/urlSearch/UrlSearch";
+import useWallet from "../../hooks/useWallet";
 
 const Upload = () => {
   const [currebtTab, setCurrentTab] = useState("upload");
+  const { wallet, isSignedIn } = useWallet();
 
   const handleTabChange = (tab) => {
     setCurrentTab(tab);
   };
+
+  const handleUpload = async () => {
+    if (isSignedIn) {
+      wallet.signInteraction();
+    }
+  };
+
   return (
     <main className={styles.upload}>
       <div className={styles.heroImage}>
@@ -37,7 +46,11 @@ const Upload = () => {
           URL
         </button>
       </div>
-      {currebtTab === "upload" ? <FileUpload /> : <UrlSearch />}
+      {currebtTab === "upload" ? (
+        <FileUpload handleUpload={handleUpload} />
+      ) : (
+        <UrlSearch />
+      )}
     </main>
   );
 };
