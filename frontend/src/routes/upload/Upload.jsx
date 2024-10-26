@@ -15,7 +15,8 @@ const Upload = () => {
 
   const handleUpload = async () => {
     if (isSignedIn) {
-      wallet.signInteraction();
+      console.log("Uploading...");
+      await wallet.signInteraction();
     }
   };
 

@@ -22,7 +22,7 @@ export const Wallet = async () => {
 
   const isSignedIn = wallet.isSignedIn();
   const accountId = wallet.getAccountId();
-  const abbountObj = wallet.account();
+  const accountObj = wallet.account();
 
   const signIn = () => {
     wallet.requestSignIn({
@@ -45,37 +45,33 @@ export const Wallet = async () => {
 
   // Contract Instance
   const contract = new Contract(wallet.account(), contractId, {
-    viewMethods: [
-      "get_owner",
-      "get_fee",
-      "get_interactions_by_user_id",
-      "get_api_user_authority",
-    ],
+    viewMethods: ["get_owner", "get_fee", "get_interactions_by_user_id"],
     changeMethods: ["set_fee", "sign_interaction", "authorize_api_user"],
   });
 
   const fetchOwner = async () => {
-    const owner = contract.get_owner();
+    const owner = await contract.get_owner();
     return owner;
   };
 
   const fetchFee = async () => {
-    const fee = contract.get_fee();
+    const fee = await contract.get_fee();
     return fee;
   };
 
   const fetchInteractionsByUserId = async (user_id = "alice.test.near") => {
-    const interactions = contract.get_interactions_by_user_id({ user_id });
+    const interactions = await contract.get_interactions_by_user_id({
+      user_id,
+    });
     return interactions;
   };
 
-  const fetchApiUserAuthority = async (user_id = "alice.test.near") => {
-    const authority = contract.get_api_user_authority({ user_id });
-    return authority;
-  };
-
-  const setFee = async (fee) => {
-    contract.set_fee({ caller: accountId, new_fee: fee });
+  const setFee = async (new_fee = "2000000") => {
+    const result = await contract.set_fee({
+      caller: "admin.test.near",
+      new_fee: new_fee.toString(),
+    });
+    return result;
   };
 
   const signInteraction = async (
@@ -83,7 +79,7 @@ export const Wallet = async () => {
     vulnerabilityType = "Reentrancy",
     network = "Ethereum"
   ) => {
-    contract.sign_interaction({
+    await contract.sign_interaction({
       user_id: userId,
       vulnerability_type: vulnerabilityType,
       network: network,
@@ -91,7 +87,7 @@ export const Wallet = async () => {
   };
 
   const authorizeApiUser = async (user_id = "alice.test.near") => {
-    contract.authorize_api_user({ user_id });
+    await contract.authorize_api_user({ user_id });
   };
 
   return {
@@ -101,11 +97,10 @@ export const Wallet = async () => {
     getBalance,
     isSignedIn,
     accountId,
-    abbountObj,
+    accountObj,
     fetchOwner,
     fetchFee,
     fetchInteractionsByUserId,
-    fetchApiUserAuthority,
     setFee,
     signInteraction,
     authorizeApiUser,
