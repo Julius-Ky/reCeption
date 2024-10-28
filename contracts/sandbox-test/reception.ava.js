@@ -74,12 +74,27 @@ test("should sign interaction by user id and retrieve it by user id", async (t) 
 
 test("should authorize api user by id and retrieve the authority", async (t) => {
   const { contract, user } = t.context.accounts;
-  await contract.call(contract, "authorize_api_user", {
+  let result = await contract.callRaw(contract, "authorize_api_user", {
     user_id: user._accountId,
   });
+
+  console.log(`Tx: ${result.transactionReceipt.hash}`);
+
   let authority = await contract.view("get_api_user_authority", {
     user_id: user._accountId,
   });
   console.log(`The user authority status is ${authority}`);
+
+  await contract.call(contract, "save_api_user_keys", {
+    user_id: user._accountId,
+    tx: result.transactionReceipt.hash,
+  });
+
+  let api_key = await contract.view("get_api_user_key", {
+    user_id: user._accountId,
+  });
+  console.log(`The user api key is ${api_key}`);
+
   t.is(authority, true);
+  t.deepEqual(result.transactionReceipt.hash, api_key);
 });

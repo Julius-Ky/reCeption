@@ -17,6 +17,7 @@ class ReCeption {
     "i"
   );
   private api_users: UnorderedMap<boolean> = new UnorderedMap<boolean>("a");
+  private api_users_keys: UnorderedMap<string> = new UnorderedMap<string>("a");
 
   @view({})
   get_owner(): string {
@@ -89,9 +90,26 @@ class ReCeption {
       near.log(`Invalid user_id length`);
     }
   }
-
   @view({})
   get_api_user_authority({ user_id }: { user_id: string }): boolean | false {
     return this.api_users.get(user_id);
+  }
+
+  @call({})
+  save_api_user_keys({ user_id, tx }: { user_id: string; tx: string }): void {
+    if (
+      user_id.length < this.MAX_INPUT_LENGTH &&
+      tx.length < this.MAX_INPUT_LENGTH
+    ) {
+      this.api_users_keys.set(user_id, tx);
+      near.log(`The user api key ${tx} has been saved`);
+    } else {
+      near.log(`Invalid parameters length`);
+    }
+  }
+
+  @view({})
+  get_api_user_key({ user_id }: { user_id: string }): string | "" {
+    return this.api_users_keys.get(user_id);
   }
 }
