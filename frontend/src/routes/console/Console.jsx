@@ -7,28 +7,26 @@ import { useEffect, useState } from "react";
 
 const Console = () => {
   const [apiKey, setApiKey] = useState("");
-  const { wallet, isSignedIn } = useWallet();
+  const { wallet, isSignedIn, accountId } = useWallet();
 
   useEffect(() => {
     if (isSignedIn) {
       const getApiKey = async () => {
-        // const apiKeyVal = await wallet.fetchKey();
-        // console.log(apiKeyVal);
-        // setApiKey(apiKeyVal);
-        // console.log(apiKeyVal);
+        const apiKeyVal = await wallet.fetchKey(accountId);
+        console.log(apiKeyVal);
+
+        setApiKey(apiKeyVal);
       };
 
       getApiKey();
     }
-  }, [isSignedIn, wallet]);
+  }, [isSignedIn, wallet, accountId]);
 
   const handleCreateApiKey = async () => {
     if (isSignedIn) {
-      await wallet.authorizeApiUser();
-      //   await wallet.saveApiKey(apiKeyVal);
-      console.log("API key res");
-
-      //   setApiKey(await wallet.fetchApiKey());
+      const apiKeyVal = await wallet.authorizeApiUser(accountId);
+      console.log("API KEY", apiKeyVal);
+      setApiKey(await wallet.fetchApiKey());
     }
   };
 

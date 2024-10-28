@@ -45,8 +45,18 @@ export const Wallet = async () => {
 
   // Contract Instance
   const contract = new Contract(wallet.account(), contractId, {
-    viewMethods: ["get_owner", "get_fee", "get_interactions_by_user_id"],
-    changeMethods: ["set_fee", "sign_interaction", "authorize_api_user"],
+    viewMethods: [
+      "get_owner",
+      "get_fee",
+      "get_interactions_by_user_id",
+      "get_api_user_key",
+    ],
+    changeMethods: [
+      "set_fee",
+      "sign_interaction",
+      "authorize_api_user",
+      "save_api_user_key",
+    ],
   });
 
   const fetchOwner = async () => {
@@ -66,12 +76,12 @@ export const Wallet = async () => {
     return interactions;
   };
 
-  // const fetchKey = async (user_id = "alice.test.near") => {
-  //   const apiKey = await contract.get_api_user_key({
-  //     user_id,
-  //   });
-  //   return apiKey;
-  // };
+  const fetchKey = async (user_id) => {
+    const apiKey = await contract.get_api_user_key({
+      user_id,
+    });
+    return apiKey;
+  };
 
   const setFee = async (new_fee = "2000000") => {
     const result = await contract.set_fee({
@@ -93,15 +103,20 @@ export const Wallet = async () => {
     });
   };
 
-  const authorizeApiUser = async (user_id = "alice.test.near") => {
+  const authorizeApiUser = async (user_id) => {
+    console.log("user_id", user_id);
+
     const result = await contract.authorize_api_user({ user_id });
-    return result;
+    localStorage.setItem("api_key", result.transactionReceipt.hash);
+    console.log("result", result);
+
+    await saveApiKey(user_id, result.transactionReceipt.hash);
   };
 
-  // const saveApiKey = async (user_id = "alice.test.near", tx) => {
-  //   const result = await contract.save_api_user_key({ user_id, tx });
-  //   return result;
-  // };
+  const saveApiKey = async (user_id, tx) => {
+    const result = await contract.save_api_user_key({ user_id, tx });
+    return result;
+  };
 
   return {
     wallet,
@@ -114,10 +129,10 @@ export const Wallet = async () => {
     fetchOwner,
     fetchFee,
     fetchInteractionsByUserId,
-    // fetchKey,
+    fetchKey,
     setFee,
     signInteraction,
     authorizeApiUser,
-    // saveApiKey,
+    saveApiKey,
   };
 };
