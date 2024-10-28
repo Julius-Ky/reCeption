@@ -11,22 +11,24 @@ const Console = () => {
 
   useEffect(() => {
     if (isSignedIn) {
-      const fetchApiKey = async () => {
-        const apiKeyVal = await wallet.fetchApiUserAuthority();
-        setApiKey(apiKeyVal);
-
-        console.log(apiKeyVal);
+      const getApiKey = async () => {
+        // const apiKeyVal = await wallet.fetchKey();
+        // console.log(apiKeyVal);
+        // setApiKey(apiKeyVal);
+        // console.log(apiKeyVal);
       };
 
-      fetchApiKey();
+      getApiKey();
     }
   }, [isSignedIn, wallet]);
 
   const handleCreateApiKey = async () => {
     if (isSignedIn) {
-      const apiKeyVal = await wallet.authorizeApiUser();
-      setApiKey(apiKeyVal);
-      console.log(apiKeyVal);
+      await wallet.authorizeApiUser();
+      //   await wallet.saveApiKey(apiKeyVal);
+      console.log("API key res");
+
+      //   setApiKey(await wallet.fetchApiKey());
     }
   };
 
