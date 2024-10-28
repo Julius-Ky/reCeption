@@ -239,7 +239,7 @@ near view <your-account.testnet> get_api_user_authority '{"user_id":"alice.test.
 `Call` methods can only be invoked using a NEAR account, since the account needs to pay GAS for the transaction.
 
 ```bash
-# Use near-cli to authorize api user
+# Use near-cli to save api user
 near call <your-account.testnet> save_api_user_key '{"user_id": "alice.test.near", "tx": "Cj2n1o1HH6iHa6HrR9AaCegQNWzFMzb8frDKp6Um6ryK"}' --accountId <your-account.testnet>
 ```
 
@@ -252,7 +252,7 @@ near call <your-account.testnet> save_api_user_key '{"user_id": "alice.test.near
 `View` methods can be called for **free** by anyone, even people **without a NEAR account**!
 
 ```bash
-# Use near-cli to get api user authority
+# Use near-cli to get api user key
 near view <your-account.testnet> get_api_user_key '{"user_id":"alice.test.near"}'
 ```
 
