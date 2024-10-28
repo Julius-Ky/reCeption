@@ -8,6 +8,8 @@ import Index from "./routes/index/Index.jsx";
 import Docs from "./routes/docs/Docs.jsx";
 import Home from "./routes/docs/pages/home/Home.jsx";
 import Upload from "./routes/upload/Upload.jsx";
+import GettingStarted from "./routes/docs/pages/getting-started/GettingStarted.jsx";
+import Console from "./routes/console/Console.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,11 +29,19 @@ const router = createBrowserRouter([
             index: true,
             element: <Home />,
           },
+          {
+            path: "getting-started",
+            element: <GettingStarted />,
+          },
         ],
       },
       {
         path: "upload",
         element: <Upload />,
+      },
+      {
+        path: "console",
+        element: <Console />,
       },
     ],
   },

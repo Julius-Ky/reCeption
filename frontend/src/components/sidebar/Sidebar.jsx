@@ -7,20 +7,23 @@ const Sidebar = () => {
       <ul className={styles.list}>
         <li>
           <NavLink
-            to={"/docs"}
+            to="/docs"
+            end
             className={({ isActive }) => (isActive ? styles.active : "")}
           >
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to={"docs/creat"}>Create API KEY</NavLink>
+          <NavLink
+            to="getting-started"
+            className={({ isActive }) => (isActive ? styles.active : "")}
+          >
+            Getting started
+          </NavLink>
         </li>
         <li>
-          <NavLink to={"docs/creat"}>Create API KEY</NavLink>
-        </li>
-        <li>
-          <NavLink to={"docs/creat"}>Create API KEY</NavLink>
+          <NavLink to={"endpoints"}>Endpoints</NavLink>
         </li>
       </ul>
     </aside>

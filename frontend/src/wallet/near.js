@@ -45,7 +45,12 @@ export const Wallet = async () => {
 
   // Contract Instance
   const contract = new Contract(wallet.account(), contractId, {
-    viewMethods: ["get_owner", "get_fee", "get_interactions_by_user_id"],
+    viewMethods: [
+      "get_owner",
+      "get_fee",
+      "get_interactions_by_user_id",
+      "get_api_user_authority",
+    ],
     changeMethods: ["set_fee", "sign_interaction", "authorize_api_user"],
   });
 
@@ -64,6 +69,13 @@ export const Wallet = async () => {
       user_id,
     });
     return interactions;
+  };
+
+  const fetchApiUserAuthority = async (user_id = "alice.test.near") => {
+    const authority = await contract.get_api_user_authority({
+      user_id,
+    });
+    return authority;
   };
 
   const setFee = async (new_fee = "2000000") => {
@@ -87,7 +99,8 @@ export const Wallet = async () => {
   };
 
   const authorizeApiUser = async (user_id = "alice.test.near") => {
-    await contract.authorize_api_user({ user_id });
+    const result = await contract.authorize_api_user({ user_id });
+    return result;
   };
 
   return {
@@ -101,6 +114,7 @@ export const Wallet = async () => {
     fetchOwner,
     fetchFee,
     fetchInteractionsByUserId,
+    fetchApiUserAuthority,
     setFee,
     signInteraction,
     authorizeApiUser,

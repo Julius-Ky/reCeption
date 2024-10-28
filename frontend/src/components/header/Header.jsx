@@ -35,6 +35,11 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
+  const onConsole = () => {
+    navigate("/console");
+    setIsMenuOpen(false);
+  };
+
   return (
     <header>
       <nav className={styles.container}>
@@ -87,7 +92,11 @@ const Header = () => {
               <Button type="primary" label={accountId} onClick={toggleMenu} />
               {isMenuOpen && (
                 <div className={styles.menu}>
-                  <Menu onLogout={handleSignout} onUpload={onUpload} />
+                  <Menu
+                    onLogout={handleSignout}
+                    onUpload={onUpload}
+                    onConsole={onConsole}
+                  />
                 </div>
               )}
             </div>
