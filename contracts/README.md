@@ -92,7 +92,7 @@ class ReCeption {
   }
 
   @call({})
-  save_api_user_keys({ user_id, tx }: { user_id: string; tx: string }): void {
+  save_api_user_key({ user_id, tx }: { user_id: string; tx: string }): void {
     if (
       user_id.length < this.MAX_INPUT_LENGTH &&
       tx.length < this.MAX_INPUT_LENGTH
@@ -219,7 +219,7 @@ near call <your-account.testnet> authorize_api_user '{"user_id": "alice.test.nea
 
 <br />
 
-## 6. Retrieve api user authority
+## 8. Retrieve api user authority
 
 `get_api_user_authority` is a read-only method (aka `view` method).
 
@@ -232,7 +232,20 @@ near view <your-account.testnet> get_api_user_authority '{"user_id":"alice.test.
 
 <br />
 
-## 6. Retrieve user's api key
+## 9. save api user key
+
+`save_api_user_key` changes the contract's state, for which it is a `call` method.
+
+`Call` methods can only be invoked using a NEAR account, since the account needs to pay GAS for the transaction.
+
+```bash
+# Use near-cli to authorize api user
+near call <your-account.testnet> save_api_user_key '{"user_id": "alice.test.near", "tx": "Cj2n1o1HH6iHa6HrR9AaCegQNWzFMzb8frDKp6Um6ryK"}' --accountId <your-account.testnet>
+```
+
+<br />
+
+## 10. Retrieve user api key
 
 `get_api_user_key` is a read-only method (aka `view` method).
 

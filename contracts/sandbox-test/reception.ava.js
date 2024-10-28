@@ -85,7 +85,7 @@ test("should authorize api user by id and retrieve the authority", async (t) => 
   });
   console.log(`The user authority status is ${authority}`);
 
-  await contract.call(contract, "save_api_user_keys", {
+  await contract.call(contract, "save_api_user_key", {
     user_id: user._accountId,
     tx: result.transactionReceipt.hash,
   });

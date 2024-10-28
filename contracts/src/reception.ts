@@ -96,7 +96,7 @@ class ReCeption {
   }
 
   @call({})
-  save_api_user_keys({ user_id, tx }: { user_id: string; tx: string }): void {
+  save_api_user_key({ user_id, tx }: { user_id: string; tx: string }): void {
     if (
       user_id.length < this.MAX_INPUT_LENGTH &&
       tx.length < this.MAX_INPUT_LENGTH
