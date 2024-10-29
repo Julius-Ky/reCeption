@@ -8,25 +8,44 @@ import { useEffect, useState } from "react";
 const Console = () => {
   const [apiKey, setApiKey] = useState("");
   const { wallet, isSignedIn, accountId } = useWallet();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (isSignedIn) {
+    if (wallet && isSignedIn && accountId) {
       const getApiKey = async () => {
         const apiKeyVal = await wallet.fetchKey(accountId);
-        console.log(apiKeyVal);
-
         setApiKey(apiKeyVal);
+        setLoading(false);
       };
 
+      const saveApiKey = async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const txnHash = urlParams.get("transactionHashes");
+
+        if (txnHash && accountId) {
+          if (!sessionStorage.getItem("transactionHashSaved")) {
+            wallet.saveApiKey(accountId, txnHash);
+            console.log("API key saved");
+            sessionStorage.setItem("transactionHashSaved", "true");
+          } else {
+            console.log("API key already saved");
+            window.history.replaceState(
+              {},
+              document.title,
+              window.location.pathname
+            );
+          }
+        }
+      };
+
+      saveApiKey();
       getApiKey();
     }
   }, [isSignedIn, wallet, accountId]);
 
   const handleCreateApiKey = async () => {
     if (isSignedIn) {
-      const apiKeyVal = await wallet.authorizeApiUser(accountId);
-      console.log("API KEY", apiKeyVal);
-      setApiKey(await wallet.fetchApiKey());
+      await wallet.authorizeApiUser(accountId);
     }
   };
 
@@ -56,6 +75,7 @@ const Console = () => {
             label="Create New API Key"
             type="primary"
             onClick={handleCreateApiKey}
+            disabled={loading || apiKey}
           />
         </div>
 
@@ -68,16 +88,29 @@ const Console = () => {
                 authenticate with reCEPTION&lsquo;s API.
               </p>
             </div>
-            {apiKey ? (
+            {loading ? (
               <div className={styles.apiKeyActions}>
-                <button>
-                  <Copy size={24} />
-                </button>
-                <pre>{apiKey}</pre>
+                <h3>API Key</h3>
+                <div>
+                  <p>Loading...</p>
+                </div>
+              </div>
+            ) : apiKey ? (
+              <div className={styles.apiKeyActions}>
+                <h3>API Key</h3>
+                <div>
+                  <button>
+                    <Copy size={24} />
+                  </button>
+                  <pre>{apiKey}</pre>
+                </div>
               </div>
             ) : (
               <div className={styles.apiKeyActions}>
-                <p>No API key found</p>
+                <h3>API Key</h3>
+                <div>
+                  <p>No API key found</p>
+                </div>
               </div>
             )}
           </div>

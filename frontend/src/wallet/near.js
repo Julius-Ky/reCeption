@@ -28,8 +28,6 @@ export const Wallet = async () => {
     wallet.requestSignIn({
       contractId,
       methodNames: [],
-      successUrl: window.location.href,
-      failureUrl: window.location.href,
     });
   };
 
@@ -106,15 +104,18 @@ export const Wallet = async () => {
   const authorizeApiUser = async (user_id) => {
     console.log("user_id", user_id);
 
-    const result = await contract.authorize_api_user({ user_id });
-    localStorage.setItem("api_key", result.transactionReceipt.hash);
-    console.log("result", result);
-
-    await saveApiKey(user_id, result.transactionReceipt.hash);
+    await contract.authorize_api_user({
+      args: {
+        user_id: user_id,
+      },
+    });
   };
 
   const saveApiKey = async (user_id, tx) => {
-    const result = await contract.save_api_user_key({ user_id, tx });
+    const result = await contract.save_api_user_key({
+      user_id,
+      tx,
+    });
     return result;
   };
 

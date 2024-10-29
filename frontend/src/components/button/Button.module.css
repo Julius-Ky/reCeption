@@ -27,3 +27,9 @@
   background-color: #ffffff;
   color: var(--primary-color-2);
 }
+
+.btn:disabled {
+  background-color: #f0f0f0;
+  color: #c0c0c0;
+  cursor: not-allowed;
+}

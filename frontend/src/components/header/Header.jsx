@@ -45,7 +45,7 @@ const Header = () => {
       <nav className={styles.container}>
         <Link to="/" className={styles.logo}>
           <img src={logo} alt="logo" width={36} />
-          <h1>reCeption</h1>
+          <h1>reCEPTION</h1>
         </Link>
         <div className={styles.navLinks}>
           <ul>
