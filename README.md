@@ -14,12 +14,6 @@ The project aims to enhance the **`security`** and **`quality of smart contracts
 
 [Demo Video]() | [Smart Contract]() | [Pitchdeck](https://drive.google.com/file/d/13zvXghH769Cm2ZQJd0uC0XoWU2bn2UIT/view?usp=sharing)
 
-### Reference training data
-- [A survey of attacks on Ethereum smart contracts](https://drive.google.com/file/d/1iKK2nI9jQnyWflCkc1lR0q_pRUKyD5wk/view?usp=sharing)
-- [Vulnerabilities #1](https://kadenzipfel.github.io/smart-contract-vulnerabilities/)
-- [Vulnerabilities #2](https://arxiv.org/html/2409.02139v1)
-- [Vulnerabilities #3](https://www.4byte.directory/)
-
 ## Key Features
 1. **AI-Based Smart Contract Analysis**:
     - Users upload their smart contract code for analysis, where AI identifies security vulnerabilities, code flaws, and potential scams.
@@ -36,6 +30,20 @@ The project aims to enhance the **`security`** and **`quality of smart contracts
     - Offers API access to analysis results and data, enabling e-commerce platforms or Web3 applications to use these as security solutions.
 
 ## Model Process
+![image](https://github.com/user-attachments/assets/ff0954d2-e9d8-4451-bfd8-a466f06f8f8e)
+<br></br>
+The model extracts the opcodes of the vulnerable contract.
+After, it transforms the opcode sequences into numerical data and feed it into a neural network for classification.
+Finally ,the model scores the potential vulnerability category the opcode belongs to.
+
+- In this case, the intuition behind the network architecture relays not solely in analyzing the opcode  but also actively picking which information is crucial to learn and to forget . In addition , it makes decisions about the necessary actions to take next (e.g., recommend a fix, analyze another operation).
+- A MODNN network combined with Reinforcement Learning techniques composes a neural architecture capable of not only analyzing contracts but also learning and improving its analysis through interaction. This could be especially useful for dynamic environments like smart contracts, where opcode patterns can vary significantly, and optimal analysis strategies need to be learned over time.
+
+> ### Reference training data
+- [A survey of attacks on Ethereum smart contracts](https://drive.google.com/file/d/1iKK2nI9jQnyWflCkc1lR0q_pRUKyD5wk/view?usp=sharing)
+- [Vulnerabilities #1](https://kadenzipfel.github.io/smart-contract-vulnerabilities/)
+- [Vulnerabilities #2](https://arxiv.org/html/2409.02139v1)
+- [Vulnerabilities #3](https://www.4byte.directory/)
 
 ## Journey
 ### reCEPTION Diagram
@@ -64,7 +72,7 @@ E-Commerce ->> NEAR: 8. Save contract data (Normal/Abnormal Classification)
 2. **Product Purchase**: The user purchases a product using cryptocurrency.
 3. **Send Smart Contract**: The E-Commerce platform sends the smart contract for payment to reCeption.
 4. **Smart Contract Analysis**: reCeption analyzes the smart contract using NEAR AI.
-   - **Smart contract data save**: NEAR saves the not analysis and analyzed smart contract data.
+   - **Smart contract data Verify**: Handles verification & fee charges for interactions.
 5. **Return Analysis result**: NEAR returns the analysis result to reCeption.
 6. **Return Safety Judgment**: reCeption sends the safety judgment result back to the user.
 7. **Share whether to run**: The user decides the next step via a checkbox or payment approval.
