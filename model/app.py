@@ -139,7 +139,7 @@ def predict():
             predicted_class = vulnerability_classes[action]
             classification_counter[predicted_class] += 1
 
-            print(f"Episode {e+1}/{ep} - Predicted Class: {predicted_class} - Total Reward: {total_reward} - Epsilon: {agent.epsilon}")
+            #print(f"Episode {e+1}/{ep} - Predicted Class: {predicted_class} - Total Reward: {total_reward} - Epsilon: {agent.epsilon}")
 
         print("\nClassification Report:")
         highest_vulnerability = None
