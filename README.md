@@ -39,6 +39,15 @@ Finally ,the model scores the potential vulnerability category the opcode belong
 - In this case, the intuition behind the network architecture relays not solely in analyzing the opcode  but also actively picking which information is crucial to learn and to forget . In addition , it makes decisions about the necessary actions to take next (e.g., recommend a fix, analyze another operation).
 - A MODNN network combined with Reinforcement Learning techniques composes a neural architecture capable of not only analyzing contracts but also learning and improving its analysis through interaction. This could be especially useful for dynamic environments like smart contracts, where opcode patterns can vary significantly, and optimal analysis strategies need to be learned over time.
 
+> ### Types of learned vulnerabilities & AI Model result
+It is just pretrained at the moment with **`Reentrancy vulnerability`** so it learned how to identified from its opcodes.
+- Overflow: 3.90%
+- Self-Destruct: 3.50%
+- Frontrunning: 4.80%
+- **`Reentrancy: 80.50%`**
+- Unauthorized Access: 3.90%
+- Gas Efficiency: 3.40%
+
 > ### Reference training data
 - [A survey of attacks on Ethereum smart contracts](https://drive.google.com/file/d/1iKK2nI9jQnyWflCkc1lR0q_pRUKyD5wk/view?usp=sharing)
 - [Vulnerabilities #1](https://kadenzipfel.github.io/smart-contract-vulnerabilities/)
