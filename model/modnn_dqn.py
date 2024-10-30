@@ -112,9 +112,10 @@ correct_label = 1  # Example: Reentrancy is class 1
 # Add more vulnerability classes
 vulnerability_classes = ["Overflow", "Reentrancy", "Frontrunning", "Unauthorized Access", "Gas Efficiency", "Self-Destruct", "Incorrect Calculations"]
 
+ep=1000 #number of episodes
 
 # Training loop
-for e in range(80):  # Increase number of episodes
+for e in range(ep):  # Increase number of episodes
     done = False
     total_reward = 0  # Track the total reward for the episode
     while not done:
@@ -136,7 +137,7 @@ for e in range(80):  # Increase number of episodes
     # Track the agent's performance
     predicted_class = vulnerability_classes[action]
     
-    print(f"Episode {e}/{80} - Predicted Class: {predicted_class} - Total Reward: {total_reward} - Epsilon: {agent.epsilon}")
+    print(f"Episode {e}/{ep} - Predicted Class: {predicted_class} - Total Reward: {total_reward} - Epsilon: {agent.epsilon}")
     
     # Check if the agent is consistently predicting the correct class
     if action == correct_label:
