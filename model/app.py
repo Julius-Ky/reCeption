@@ -14,6 +14,10 @@ def predict():
         data = request.json  # Expecting a JSON payload
         opcode_sequence = data['opcode_sequence']
 
+         # Check if the length of opcode_sequence is 341
+        if len(opcode_sequence) != 341:
+            return jsonify({"error": "Invalid input: opcode sequence must be exactly 341 in length at the moment only identification Reentrancy."}), 400
+
         # Initialize environment and agent parameters
         state_size = len(opcode_sequence)  # Length of opcode sequence
         action_size = 6  # Number of vulnerability classes (including Self-Destruct)
@@ -105,6 +109,11 @@ def predict():
    
 
         vulnerability_classes = ["Overflow", "Reentrancy", "Frontrunning", "Unauthorized Access", "Gas Efficiency", "Self-Destruct", "Incorrect Calculations"]
+        ##LINES FOR FUTURE DEVELOPMENT FOR CORRECTLY IDENTIFYING NO ERRORS
+        ##LINES FOR FUTURE DEVELOPMENT FOR CORRECTLY IDENTIFYING NO ERRORS
+        ##LINES FOR FUTURE DEVELOPMENT FOR CORRECTLY IDENTIFYING NO ERRORS
+        ##LINES FOR FUTURE DEVELOPMENT FOR CORRECTLY IDENTIFYING NO ERRORS
+
 
         classification_counter = Counter() 
         ep=1000 #number of episodes
@@ -132,27 +141,24 @@ def predict():
 
             print(f"Episode {e+1}/{ep} - Predicted Class: {predicted_class} - Total Reward: {total_reward} - Epsilon: {agent.epsilon}")
 
-            #print(f"Episode {e}/{15} - Predicted Class: {predicted_class} - Total Reward: {total_reward} - Epsilon: {agent.epsilon}")
-
-            if action == correct_label and confidence >= confidence_threshold:
-                print(f"Episode {e+1}/{ep} - Correctly Classified: {predicted_class} - Confidence: {confidence:.2f}")
-                      
-            #if action == correct_label:
-                #print(f"Reentrancy correctly classified in Episode {e+1}")
-
-                #print(f"Report on Reentrancy Vulnerability in Smart Contracts
-                   # Reentrancy is a common vulnerability in smart contracts that occurs when a function
-                    #makes an external call to another contract before it resolves its state changes. 
-                    #This can allow an attacker to call back into the original function, potentially
-                    #leading to unexpected behavior, unauthorized fund transfers, or other malicious actions.")
-
         print("\nClassification Report:")
+        highest_vulnerability = None
+        highest_percentage = 0
+
+      
         for vulnerability, count in classification_counter.items():
             percentage = (count / ep) * 100
             print(f"{vulnerability}: {percentage:.2f}%")
+        
+            if percentage > highest_percentage:
+                highest_percentage = percentage
+                highest_vulnerability = vulnerability
+
+      # Send only the highest scoring vulnerability
+        return jsonify({"predicted_class": highest_vulnerability, "confidence": highest_percentage})
+
        
-       
-        return jsonify({"predicted_class": predicted_class})
+        #return jsonify({"predicted_class": predicted_class})
 
     except Exception as e:
         return jsonify({"error": str(e)})
