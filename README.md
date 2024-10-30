@@ -82,7 +82,7 @@ E-Commerce ->> NEAR: 8. Save contract data (Normal/Abnormal Classification)
 ### Platform Journey
 ![image](https://github.com/user-attachments/assets/503aca13-2084-4870-b88c-4acb323f1fcb)
 
-### User Journey
+### User Journey (If do it directly on the platform)
 ```mermaid
 graph TD;
     Sign-In/Sign-Up-->File-Upload;
