@@ -1,7 +1,7 @@
 ![reCEPTION](https://github.com/user-attachments/assets/775b68ac-564e-42fb-b7d5-177943ed8995)
 
 # Contents
-- [Over view](https://github.com/Julius-Ky/reCeption/blob/main/README.md#reception-web30-recaptcha)
+- [Overview](https://github.com/Julius-Ky/reCeption/blob/main/README.md#reception-web30-recaptcha)
 - [Key Features](https://github.com/Julius-Ky/reCeption/blob/main/README.md#key-features)
 - [Model Process](https://github.com/Julius-Ky/reCeption/blob/main/README.md#model-process)
 - [Journey](https://github.com/Julius-Ky/reCeption/blob/main/README.md#Journey)
