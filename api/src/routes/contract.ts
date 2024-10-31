@@ -32,6 +32,7 @@ contractsRouter.post("/analyze", (req: UserRequest, res) => {
 contractsRouter.get("/getUserAnalysis/:user_id", (req, res) => {
   const user = analysis.find((u) => u.user_id === req.params.user_id);
   if (!user) res.status(404).json({ message: "User not found" });
+
   res.status(200).json(user);
 });
 
