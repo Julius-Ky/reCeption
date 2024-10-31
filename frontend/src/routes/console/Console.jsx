@@ -75,7 +75,7 @@ const Console = () => {
             label="Create New API Key"
             type="primary"
             onClick={handleCreateApiKey}
-            disabled={loading || apiKey}
+            // disabled={loading || apiKey}
           />
         </div>
 
