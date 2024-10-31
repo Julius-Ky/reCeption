@@ -3,50 +3,34 @@ import bannerImg from "../../assets/logo.png";
 import Button from "../../components/button/Button";
 import styles from "./Console.module.css";
 import useWallet from "../../hooks/useWallet";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const Console = () => {
   const [apiKey, setApiKey] = useState("");
   const { wallet, isSignedIn, accountId } = useWallet();
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const getApiKey = useCallback(async () => {
     if (wallet && isSignedIn && accountId) {
-      const getApiKey = async () => {
-        const apiKeyVal = await wallet.fetchKey(accountId);
-        setApiKey(apiKeyVal);
-        setLoading(false);
-      };
-
-      const saveApiKey = async () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const txnHash = urlParams.get("transactionHashes");
-
-        if (txnHash && accountId) {
-          if (!sessionStorage.getItem("transactionHashSaved")) {
-            wallet.saveApiKey(accountId, txnHash);
-            console.log("API key saved");
-            sessionStorage.setItem("transactionHashSaved", "true");
-          } else {
-            console.log("API key already saved");
-            window.history.replaceState(
-              {},
-              document.title,
-              window.location.pathname
-            );
-          }
-        }
-      };
-
-      saveApiKey();
-      getApiKey();
+      const apiKeyVal = await wallet.fetchKey(accountId);
+      setApiKey(apiKeyVal);
+      setLoading(false);
     }
-  }, [isSignedIn, wallet, accountId]);
+  }, [wallet, isSignedIn, accountId]);
+
+  useEffect(() => {
+    getApiKey();
+  }, [getApiKey]);
 
   const handleCreateApiKey = async () => {
     if (isSignedIn) {
-      await wallet.authorizeApiUser(accountId);
+      setLoading(true);
+      const result = await wallet.authorizeApiUser(accountId);
+      await wallet.saveApiKey(accountId, result);
+      getApiKey();
     }
+
+    setLoading(false);
   };
 
   return (
@@ -72,10 +56,10 @@ const Console = () => {
         <div className={styles.heading}>
           <h2>API Keys</h2>
           <Button
-            label="Create New API Key"
+            label={loading ? "Loading..." : "Create New API Key"}
             type="primary"
             onClick={handleCreateApiKey}
-            // disabled={loading || apiKey}
+            disabled={loading}
           />
         </div>
 

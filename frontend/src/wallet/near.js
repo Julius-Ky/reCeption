@@ -104,11 +104,25 @@ export const Wallet = async () => {
   const authorizeApiUser = async (user_id) => {
     console.log("user_id", user_id);
 
-    await contract.authorize_api_user({
-      args: {
-        user_id: user_id,
-      },
-    });
+    try {
+      const account = wallet.account();
+      const result = await account.functionCall({
+        contractId: contractId,
+        methodName: "authorize_api_user",
+        args: { user_id: user_id },
+      });
+
+      const receiptId = result.transaction?.hash;
+
+      if (receiptId) {
+        console.log("Transaction receipt:", receiptId);
+        return receiptId;
+      } else {
+        console.log("No receipt found in response");
+      }
+    } catch (error) {
+      console.error("Error while authorizing API user:", error);
+    }
   };
 
   const saveApiKey = async (user_id, tx) => {
