@@ -12,6 +12,10 @@ const doc = {
       url: "http://localhost:8080",
       description: "",
     },
+    {
+      url: "https://reception-vn4m.onrender.com",
+      description: "remote",
+    },
   ],
   components: {
     securitySchemes: {
