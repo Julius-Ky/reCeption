@@ -10,7 +10,7 @@ const doc = {
   servers: [
     {
       url: "http://localhost:8080",
-      description: "",
+      description: "local",
     },
     {
       url: "https://reception-vn4m.onrender.com",
