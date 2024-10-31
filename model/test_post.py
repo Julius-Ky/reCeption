@@ -1,17 +1,47 @@
 import requests
 import json
 
-# Define the URL for the Flask app
+# Define the URL of the Flask app's endpoint 
 url = 'http://127.0.0.1:5000/predict'
 
-# Example opcode sequence
-data = {
-    "opcode_sequence": [96, 128, 96, 64, 82, 52, 128, 21, 96, 14, 87, 95, 95, 253, 91, 80, 97, 5, 251, 128, 97, 0, 28, 95, 57, 95, 243, 254, 96, 128, 96, 64, 82, 96, 4, 54, 16, 97, 0, 62, 87, 95, 53, 96, 224, 28, 128, 99, 18, 6, 95, 224, 20, 97, 0, 66, 87, 128, 99, 39, 226, 53, 227, 20, 97, 0, 108, 87, 128, 99, 46, 26, 125, 77, 20, 97, 0, 168, 87, 128, 99, 208, 227, 13, 176, 20, 97, 0, 208, 87, 91, 95, 95, 253, 91, 52, 128, 21, 97, 0, 77, 87, 95, 95, 253, 91, 80, 97, 0, 86, 97, 0, 218, 86, 91, 96, 64, 81, 97, 0, 99, 145, 144, 97, 3, 26, 86, 91, 96, 64, 81, 128, 145, 3, 144, 243, 91, 52, 128, 21, 97, 0, 119, 87, 95, 95, 253, 91, 80, 97, 0, 146, 96, 4, 128, 54, 3, 129, 1, 144, 97, 0, 141, 145, 144, 97, 3, 145, 86, 91, 97, 1, 29, 86, 91, 96, 64, 81, 97, 0, 159, 145, 144, 97, 3, 26, 86, 91, 96, 64, 81, 128, 145, 3, 144, 243, 91, 52, 128, 21, 97, 0, 179, 87, 95, 95, 253, 91, 80, 97, 0, 206, 96, 4, 128, 54, 3, 129, 1, 144, 97, 0, 201, 145, 144, 97, 3, 230, 86, 91, 97, 1, 49, 86, 91, 0, 91, 97, 0, 216, 97, 2, 174, 86, 91, 0, 91, 95, 95, 95, 51, 115, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 22, 115, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 22, 129, 82, 96, 32, 1, 144, 129, 82, 96, 32, 1, 95, 32, 84, 144, 80, 144, 86, 91, 95, 96, 32, 82, 128, 95, 82, 96, 64, 95, 32, 95, 145, 80, 144, 80, 84, 129, 86, 91, 128, 95, 95, 51, 115, 255, 255]
-}
+# Define the API key to use for the request (make sure it’s one of the authorized keys in your Flask app) api_key = "Df8qoDj4XCVVYaHsX27Nm4p1YuCLA2ZoowJ1bSipegw8" 
+api_key = 'Df8qoDj4XCVVYaHsX27Nm4p1YuCLA2ZoowJ1bSipegw8'
+# Define the JSON payload with Solidity source code 
+data = { 
+       "contract_source_code": """ 
+        pragma solidity ^0.8.0; 
+        contract ReentrancyVulnerable {
+    mapping(address => uint256) public balances;
 
-# Send POST request
-headers = {'Content-Type': 'application/json'}
+    function deposit() public payable {
+        balances[msg.sender] += msg.value;
+    }
+
+    function withdraw(uint256 amount) public {
+        require(balances[msg.sender] >= amount, "Insufficient balance");
+
+        (bool success, ) = msg.sender.call{value: amount}("");
+        require(success, "Transfer failed");
+
+        balances[msg.sender] -= amount;
+    }
+
+    function getBalance() public view returns (uint256) {
+        return balances[msg.sender];
+    }
+} """
+ } 
+
+# Define headers, including the API key
+headers = {
+	 "Content-Type": "application/json", 
+         "X-API-KEY": api_key 
+} 
+
+# Send the POST request 
 response = requests.post(url, data=json.dumps(data), headers=headers)
 
-# Print response
+
+
+# Print the response from the server 
 print(f"Response: {response.json()}")
