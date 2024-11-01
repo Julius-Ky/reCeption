@@ -100,6 +100,23 @@ const Console = () => {
           </div>
         </div>
       </section>
+
+      <section className={styles.section}>
+        <div className={styles.heading}>
+          <h2>Endpoints</h2>
+        </div>
+
+        <div className={styles.endpoints}>
+          <span>To get access to all endpoints, pleasse visit: </span>
+          <a
+            href="https://reception-vn4m.onrender.com/api-docs/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            https://reception-api.near.org
+          </a>
+        </div>
+      </section>
     </main>
   );
 };
