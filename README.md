@@ -41,7 +41,7 @@ Finally ,the model scores the potential vulnerability category the opcode belong
 
 > ### Types of learned vulnerabilities & AI Model result
 
-![image](https://github.com/user-attachments/assets/4df34a27-1333-4d29-b3e7-476ccbd5aa8b)
+![AI_Model_result](https://github.com/user-attachments/assets/196f42ac-1ea8-4dad-a4ca-d9fe32ba5667)
 
 It is just pretrained at the moment with **`Reentrancy vulnerability`** so it learned how to identified from its opcodes.
 - Overflow: 3.90%
