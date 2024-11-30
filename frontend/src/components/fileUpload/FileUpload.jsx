@@ -1,20 +1,24 @@
-import { FileUp } from "lucide-react";
+import { UploadCloud } from "lucide-react";
 import styles from "./FileUpload.module.css";
 import Button from "../button/Button";
 import PropTypes from "prop-types";
 
 const FileUpload = ({ handleUpload }) => {
   return (
-    <div className={styles.upload}>
-      <div className={styles.icon}>
-        <FileUp size={64} />
-      </div>
-      <label className={styles.label}>
-        <input type="file" />
-        <span>Choose a file</span>
+    <form className={styles.upload}>
+      <label htmlFor="upload">
+        <div className={styles.label}>
+          <UploadCloud size={24} />
+          <p>
+            <span>Drag and Drop</span> or Browse Files
+          </p>
+        </div>
+        File Format: .sol, .rs, .ts
       </label>
+      <input type="file" name="upload" id="upload" />
+
       <Button label="Upload" onClick={handleUpload} />
-    </div>
+    </form>
   );
 };
 

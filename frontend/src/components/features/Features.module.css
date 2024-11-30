@@ -1,17 +1,33 @@
 .features {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  padding-block: 48px;
+  gap: 150px;
+  padding-top: 64px;
+  padding-bottom: 48px;
+  background: url("../../assets/glass-2.png") no-repeat center;
 }
 
 .header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  align-self: center;
+}
+
+.header h2 {
   font-size: 2.5rem;
-  text-align: center;
+  font-weight: 600;
+}
+
+.header p {
+  color: var(--Accent-1);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28.13px;
 }
 
 .row {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(432px, 1fr));
+  gap: 10px;
 }

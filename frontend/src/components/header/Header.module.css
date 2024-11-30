@@ -6,6 +6,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  background-color: var(--primary-1);
+  border: 1px solid #373737;
+  border-radius: 64px;
 }
 
 .logo {
@@ -17,7 +20,7 @@
 .logo h1 {
   font-size: 24px;
   font-weight: 600;
-  color: #333333;
+  color: #ffffff;
 }
 
 .navLinks {
@@ -47,7 +50,7 @@
 }
 
 .active {
-  color: var(--primary-color-1);
+  color: var(--secondary-1);
   font-weight: 500;
 }
 

@@ -50,12 +50,28 @@ const Header = () => {
         <div className={styles.navLinks}>
           <ul>
             <li>
-              <NavLink
-                to="features"
+              <a
+                href="/#"
                 className={({ isActive }) => (isActive ? styles.active : "")}
               >
-                Features
-              </NavLink>
+                Product
+              </a>
+            </li>
+            <li>
+              <a
+                href="/#solutions"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Solutions
+              </a>
+            </li>
+            <li>
+              <a
+                href="/#how"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                How it Works
+              </a>
             </li>
             <li>
               <NavLink
@@ -67,29 +83,21 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="how"
+                to="about"
                 className={({ isActive }) => (isActive ? styles.active : "")}
               >
-                How it works
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="faq"
-                className={({ isActive }) => (isActive ? styles.active : "")}
-              >
-                FAQ
+                About
               </NavLink>
             </li>
           </ul>
           {!isSignedIn ? (
-            <Button label={"Connect"} onClick={handleSignIn} />
+            <Button label={"Connect Wallet"} onClick={handleSignIn} />
           ) : (
             <div className={styles.buttons}>
               <p className={styles.balance}>
                 {balance ? `${balance} NEAR` : "Fetching balance..."}
               </p>
-              <Button type="primary" label={accountId} onClick={toggleMenu} />
+              <Button label={accountId} onClick={toggleMenu} />
               {isMenuOpen && (
                 <div className={styles.menu}>
                   <Menu

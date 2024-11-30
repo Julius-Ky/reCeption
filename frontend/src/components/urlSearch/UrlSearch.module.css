@@ -1,20 +1,16 @@
 .search {
-  composes: upload from "../fileUpload/FileUpload.module.css";
-  padding: 0 80px 48px;
-}
-
-.icon {
-  composes: icon from "../fileUpload/FileUpload.module.css";
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #373737;
+  border-radius: 100px;
 }
 
 .input {
-  width: 100%;
-  padding: 8px 16px;
-  border: 1px solid var(--primary-color-2);
-  font-size: 14px;
-  border-radius: 8px;
-}
-
-.input:focus {
-  outline-color: var(--primary-color-2);
+  background-color: transparent;
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+  color: var(--secondary-1);
 }

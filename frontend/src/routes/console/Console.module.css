@@ -1,150 +1,155 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding: 0 32px 48px;
+  /* gap: 1rem; */
+  padding: 48px 32px;
 }
 
 .banner {
   display: flex;
-  justify-content: center;
-  gap: 4rem;
-  align-items: center;
-  background-color: white;
+  flex-direction: column;
+  gap: 2rem;
   padding: 1rem;
-  border-radius: 8px;
-  border: 2px solid var(--Accent2);
 }
 
 .texts {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 500px;
 }
 
 .texts h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--secondary-color);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 56.25px;
 }
 
 .texts p {
-  font-size: 1.1rem;
-  color: var(--secondary-color-2);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 23.44px;
+  color: var(--Accent-1);
 }
 
-.lists {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-inline: 1rem;
-  font-size: 1.1rem;
-  color: var(--secondary-color-2);
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.heading h2 {
-  font-size: 1.5rem;
+.icon {
+  font-size: 20px;
   font-weight: 600;
-}
-
-.apiKeys {
+  line-height: 23.44px;
   display: flex;
-  flex-direction: column;
   gap: 8px;
-  padding: 2rem;
-  background-color: var(--Accent3);
-  border-radius: 8px;
-}
-
-.apiKey {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.apiKeyText {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.apiKeyText h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.apiKeyText p {
-  font-size: 1rem;
-  color: var(--secondary-color-2);
-}
-
-.apiKeyActions {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.apiKeyActions > div {
-  display: flex;
   align-items: center;
-  background-color: var(--secondary-color);
-  border-radius: 8px;
-  color: white;
+  margin-top: 1rem;
+}
+
+.api {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+  border: 1px solid #373737;
+  border-radius: 64px;
   overflow: hidden;
+  margin-top: 100px;
 }
 
-.apiKeyActions button {
-  border: none;
-  background-color: var(--primary-color-1);
-  font-size: 1rem;
-  padding: 10px 10px 2px;
-  cursor: pointer;
-  color: white;
+.api div {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  flex: 1;
+  padding-right: 100px;
 }
 
-.apiKeyActions button:hover {
-  background-color: var(--primary-color-2);
+.api div p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.44px;
+  text-align: center;
 }
 
-.apiKeyActions pre {
-  padding-left: 10px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.header {
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-align: center;
+  color: var(--Accent-1);
 }
 
-.apiKeyActions p {
-  padding: 10px;
-}
-
-.apiKeyActions h3 {
-  font-weight: 500;
-}
-
-.endpoints {
+.api form {
   display: flex;
   align-items: center;
+  padding: 10px;
+  border: 1px solid #373737;
+  border-radius: 100px;
+}
+
+.input {
+  background-color: transparent;
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+  color: var(--secondary-1);
+}
+
+.copy {
+  background-color: var(--Accent-1);
+  width: 49px;
+  height: 49px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.howItWorks {
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+.howTitle {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
-.endpoints span {
+.stepNumber {
+  display: inline-block;
+  background: linear-gradient(135deg, #6d28d9, #4ade80);
+  color: #fff;
   font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
 }
 
-.endpoints a {
-  font-size: 1.2rem;
-  /* color: var(--secondary-color-2); */
-  text-decoration: underline;
+.step h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.step p {
+  font-size: 1rem;
+  line-height: 1.4;
+  padding-right: 30px;
+}
+
+code {
+  background-color: #333;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
 }

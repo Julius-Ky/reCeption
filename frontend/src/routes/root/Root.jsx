@@ -4,7 +4,7 @@ import styles from "./Root.module.css";
 
 const Root = () => {
   return (
-    <div className={styles.root}>
+    <div className={`dark ${styles.root}`}>
       <Header />
       <div className={styles.children}>
         <Outlet />

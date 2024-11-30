@@ -2,40 +2,64 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 0 32px 48px;
+  padding: 48px 0;
+}
+
+.top {
+  display: flex;
+  gap: 32px;
 }
 
 .heroImage {
-  height: inherit;
-  background-color: var(--Accent3);
   flex: 1;
-  display: flex;
-  justify-content: center;
   padding: 10px;
+  margin-top: 8rem;
 }
 
-.center {
-  text-align: center;
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.heroTexts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.heroTexts h2 {
+  font-size: 3rem;
+}
+
+.heroTexts p {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 23.44px;
+  color: var(--Accent-1);
 }
 
 .navs {
   display: flex;
-  margin: 20px 80px;
+  background-color: var(--secondary-1);
+  border-radius: 100px;
+  padding: 5px;
 }
+
 .btn {
-  padding: 8px;
+  padding: 8px 24px;
   flex: 1;
-  border: none;
-  background-color: var(--Accent3);
   cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 100px;
+  font-weight: 600;
 }
 
 .btn:hover {
-  background-color: var(--Accent2);
+  background-color: var(--Accent-1);
 }
 
 .active {
-  font-weight: 500;
-  border-bottom: 1px solid var(--secondary-color-2);
-  background-color: var(--Accent2);
+  background-color: var(--Accent-1);
 }

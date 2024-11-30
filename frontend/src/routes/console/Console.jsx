@@ -1,9 +1,9 @@
-import { Copy } from "lucide-react";
-import bannerImg from "../../assets/logo.png";
+import { Copy, PercentCircle } from "lucide-react";
 import Button from "../../components/button/Button";
 import styles from "./Console.module.css";
 import useWallet from "../../hooks/useWallet";
 import { useCallback, useEffect, useState } from "react";
+import glass4 from "../../assets/glass-4.png";
 
 const Console = () => {
   const [apiKey, setApiKey] = useState("");
@@ -35,86 +35,86 @@ const Console = () => {
 
   return (
     <main className={styles.container}>
+      {/* Banner Section */}
       <section className={styles.banner}>
-        <div className={styles.bannerImg}>
-          <img src={bannerImg} alt="robbot" width={200} />
-        </div>
         <div className={styles.texts}>
           <h1>Getting Started with reCEPTION</h1>
           <p>
-            Advanced features such as smart contract fraud prevention, analytics
-            reports, code follow-up, data collection, etc. are also supported.
+            Unlock advanced features like smart contract fraud prevention,
+            detailed <br /> analytics reports, code monitoring, data collection,
+            and more.
           </p>
-          <ul className={styles.lists}>
-            <li>Free for 6 months for first time subscribers only.</li>
-            <li>No credit card required</li>
-          </ul>
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <div className={styles.heading}>
-          <h2>API Keys</h2>
-          <Button
-            label={loading ? "Loading..." : "Create New API Key"}
-            type="primary"
-            onClick={handleCreateApiKey}
-            disabled={loading}
-          />
-        </div>
-
-        <div className={styles.apiKeys}>
-          <div className={styles.apiKey}>
-            <div className={styles.apiKeyText}>
-              <h3>Your API Key</h3>
-              <p>
-                Your API key is a unique identifier that allows you to
-                authenticate with reCEPTION&lsquo;s API.
-              </p>
-            </div>
-            {loading ? (
-              <div className={styles.apiKeyActions}>
-                <h3>API Key</h3>
-                <div>
-                  <p>Loading...</p>
-                </div>
-              </div>
-            ) : apiKey ? (
-              <div className={styles.apiKeyActions}>
-                <h3>API Key</h3>
-                <div>
-                  <button>
-                    <Copy size={24} />
-                  </button>
-                  <pre>{apiKey}</pre>
-                </div>
-              </div>
-            ) : (
-              <div className={styles.apiKeyActions}>
-                <h3>API Key</h3>
-                <div>
-                  <p>No API key found</p>
-                </div>
-              </div>
-            )}
+          <div className={styles.icon}>
+            <PercentCircle size={24} />
+            Special Offer: Enjoy 6 months free for first-time subscribers—no
+            credit card required!
           </div>
         </div>
       </section>
 
-      <section className={styles.section}>
-        <div className={styles.heading}>
-          <h2>Endpoints</h2>
+      {/* API Key Section */}
+      <section className={styles.api}>
+        <img src={glass4} alt="icon" />
+        <div>
+          <h2 className={styles.header}>API Key</h2>
+          <p>
+            Your API key is a unique identifier used to authenticate and
+            securely access Reception&lsquo;s API.
+          </p>
+          <form>
+            <button className={styles.copy}>
+              <Copy size={24} />
+            </button>
+            <input
+              type="text"
+              disabled
+              value={apiKey}
+              className={styles.input}
+            />
+            <Button
+              label={loading ? "Loading..." : "Create New API Key"}
+              onClick={handleCreateApiKey}
+              disabled={loading}
+            />
+          </form>
         </div>
+      </section>
 
-        <div className={styles.endpoints}>
-          <span>To get access to all endpoints, pleasse visit: </span>
-          <a
-            href="https://reception-vn4m.onrender.com/api-docs/"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            https://reception-api.near.org
-          </a>
+      {/* How it Works Section */}
+      <section className={styles.howItWorks}>
+        <h2 className={styles.howTitle}>How it works?</h2>
+        <div className={styles.steps}>
+          <div className={styles.step}>
+            <span className={styles.stepNumber}>1</span>
+            <h3>Configure your API</h3>
+            <p>
+              Generate and securely store your unique API key for
+              authentication.
+            </p>
+          </div>
+          <div className={styles.step}>
+            <span className={styles.stepNumber}>2</span>
+            <h3>Start the Development Server</h3>
+            <p>
+              Start the development server by running the following command in
+              your terminal: <br />
+              <code>cd my-project && npm start</code>
+            </p>
+          </div>
+          <div className={styles.step}>
+            <span className={styles.stepNumber}>3</span>
+            <h3>Integrate Reception&lsquo;s API</h3>
+            <p>
+              Use your API key to authenticate and access advanced features such
+              as smart contract fraud prevention, analytics reports, and code
+              monitoring.
+            </p>
+          </div>
+          <div className={styles.step}>
+            <span className={styles.stepNumber}>4</span>
+            <h3>Begin Building!</h3>
+            <p>Unleash the full potential of your project with Reception.</p>
+          </div>
         </div>
       </section>
     </main>
