@@ -14,7 +14,7 @@ const Card = ({ icon, iconPosition, title, desc }) => {
 };
 
 Card.propTypes = {
-  icon: PropType.element,
+  icon: PropType.any,
   iconPosition: PropType.string,
   title: PropType.string,
   desc: PropType.string,

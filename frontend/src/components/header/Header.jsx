@@ -35,8 +35,8 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
-  const onConsole = () => {
-    navigate("/console");
+  const openDashboard = () => {
+    navigate("/dashboard");
     setIsMenuOpen(false);
   };
 
@@ -50,28 +50,13 @@ const Header = () => {
         <div className={styles.navLinks}>
           <ul>
             <li>
-              <a
-                href="/#"
-                className={({ isActive }) => (isActive ? styles.active : "")}
-              >
-                Product
-              </a>
+              <a href="/#">Product</a>
             </li>
             <li>
-              <a
-                href="/#solutions"
-                className={({ isActive }) => (isActive ? styles.active : "")}
-              >
-                Solutions
-              </a>
+              <a href="/#solutions">Solutions</a>
             </li>
             <li>
-              <a
-                href="/#how"
-                className={({ isActive }) => (isActive ? styles.active : "")}
-              >
-                How it Works
-              </a>
+              <a href="/#how">How it Works</a>
             </li>
             <li>
               <NavLink
@@ -103,7 +88,7 @@ const Header = () => {
                   <Menu
                     onLogout={handleSignout}
                     onUpload={onUpload}
-                    onConsole={onConsole}
+                    openDashboard={openDashboard}
                   />
                 </div>
               )}

@@ -5,7 +5,7 @@
   gap: 2.5rem;
 }
 
-label {
+.uploadLabel {
   width: 100%;
   border-radius: 100px;
   padding: 64px;

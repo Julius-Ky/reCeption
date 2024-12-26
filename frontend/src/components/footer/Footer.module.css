@@ -1,0 +1,61 @@
+footer {
+  background-color: var(--primary-1);
+  color: var(--white);
+  background-color: var(--primary-1);
+  border: 1px solid #373737;
+  border-top-right-radius: 100px;
+  border-top-left-radius: 100px;
+  padding: 3rem;
+  margin-top: 3rem;
+  border-bottom: none;
+}
+
+.footer {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.toggler {
+  padding: 3px;
+  background-color: #ffffff;
+  border-radius: 32px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.switch input {
+  appearance: none;
+}
+
+.switch .slider {
+  position: absolute;
+  height: 32px;
+  width: 32px;
+  left: 0;
+  bottom: 0;
+  background-color: var(--Accent-1);
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--primary-1);
+  transform: translateX(28px);
+}

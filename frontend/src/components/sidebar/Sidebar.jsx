@@ -3,7 +3,7 @@ import styles from "./Sidebar.module.css";
 
 const Sidebar = () => {
   return (
-    <aside>
+    <aside className={styles.aside}>
       <ul className={styles.list}>
         <li>
           <NavLink

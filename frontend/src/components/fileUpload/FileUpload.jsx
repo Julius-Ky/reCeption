@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const FileUpload = ({ handleUpload }) => {
   return (
     <form className={styles.upload}>
-      <label htmlFor="upload">
+      <label htmlFor="upload" className={styles.uploadLabel}>
         <div className={styles.label}>
           <UploadCloud size={24} />
           <p>

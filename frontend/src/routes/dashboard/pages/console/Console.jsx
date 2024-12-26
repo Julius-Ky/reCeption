@@ -1,9 +1,9 @@
 import { Copy, PercentCircle } from "lucide-react";
-import Button from "../../components/button/Button";
+import Button from "../../../../components/button/Button";
 import styles from "./Console.module.css";
-import useWallet from "../../hooks/useWallet";
+import useWallet from "../../../../hooks/useWallet";
 import { useCallback, useEffect, useState } from "react";
-import glass4 from "../../assets/glass-4.png";
+import glass4 from "../../../../assets/glass-4.png";
 
 const Console = () => {
   const [apiKey, setApiKey] = useState("");

@@ -1,0 +1,49 @@
+.overview {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 2rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  text-align: center;
+  gap: 2.5rem;
+  padding: 2rem;
+  border-radius: 31px;
+  border: 1px solid #373737;
+  color: var(--Accent-1);
+}
+
+.card h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 16px;
+  font-weight: 300;
+}
+.card .score {
+  font-size: 40px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.card .value {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+.score span {
+  font-size: 24px;
+}

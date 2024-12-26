@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.sidebar {
+  width: 120px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 1px solid var(--Accent-1);
+  border-radius: 31px;
+  list-style: none;
+}
+
+.links li a {
+  padding: 20px 10px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 300;
+  border-radius: 31px;
+}
+
+.links a:hover {
+  color: var(--primary-1);
+  background-color: #ffffff;
+}
+
+.links .active {
+  background-color: #ffffff;
+  color: var(--primary-1);
+}
+
+.content {
+  flex: 1;
+}

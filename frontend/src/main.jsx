@@ -9,7 +9,10 @@ import Docs from "./routes/docs/Docs.jsx";
 import Home from "./routes/docs/pages/home/Home.jsx";
 import Upload from "./routes/upload/Upload.jsx";
 import GettingStarted from "./routes/docs/pages/getting-started/GettingStarted.jsx";
-import Console from "./routes/console/Console.jsx";
+import Console from "./routes/dashboard/pages/console/Console.jsx";
+import Dashboard from "./routes/dashboard/Dashboard.jsx";
+import Overview from "./routes/dashboard/pages/overview/Overview.jsx";
+import Inspection from "./routes/dashboard/pages/inspection/Inspection.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +45,24 @@ const router = createBrowserRouter([
       {
         path: "console",
         element: <Console />,
+      },
+      {
+        path: "dashboard",
+        element: <Dashboard />,
+        children: [
+          {
+            index: true,
+            element: <Overview />,
+          },
+          {
+            path: "inspection",
+            element: <Inspection />,
+          },
+          {
+            path: "api-keys",
+            element: <Console />,
+          },
+        ],
       },
     ],
   },
