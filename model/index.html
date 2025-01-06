@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Contract Vulnerability Detector</title>
+</head>
+<body>
+    <h1>Smart Contract Vulnerability Detector</h1>
+    <form id="predictForm">
+        <textarea id="sourceCode" rows="15" cols="80" placeholder="Enter Solidity contract source code"></textarea>
+        <br>
+        <button type="button" onclick="submitPrediction()">Analyze</button>
+    </form>
+    <h2>Result:</h2>
+    <p id="result"></p>
+    <script>
+        async function submitPrediction() {
+            const sourceCode = document.getElementById('sourceCode').value;
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = "Analyzing...";
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': 'Df8qoDj4XCVVYaHsX27Nm4p1YuCLA2ZoowJ1bSipegw8'
+                    },
+                    body: JSON.stringify({ contract_source_code: sourceCode })
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    resultElement.textContent = `Predicted Class: ${data.predicted_class}, Confidence: ${data.confidence}%`;
+                } else {
+                    resultElement.textContent = `Error: ${data.error}`;
+                }
+            } catch (error) {
+                resultElement.textContent = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
