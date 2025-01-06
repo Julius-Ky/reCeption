@@ -8,16 +8,49 @@ import How from "../../components/how/How";
 
 const Upload = () => {
   const [currebtTab, setCurrentTab] = useState("upload");
-  const { wallet, isSignedIn } = useWallet();
+  const { wallet, isSignedIn, accountId } = useWallet();
 
   const handleTabChange = (tab) => {
     setCurrentTab(tab);
   };
 
-  const handleUpload = async () => {
+  const handleUpload = async (fileContent) => {
     if (isSignedIn) {
-      console.log("Uploading...");
-      await wallet.signInteraction();
+      try {
+        console.log("Uploading...");
+        const apiKeyVal = await wallet.fetchKey(accountId);
+        console.log("API Key:", apiKeyVal);
+
+        // Prepare the request payload
+        const payload = {
+          contract_source_code: fileContent, // Pass the file content as the value
+        };
+
+        // Make the POST request
+        const response = await fetch(
+          "https://4900-2806-2a0-f12-8e60-e88f-9d11-582d-502e.ngrok-free.app/predict",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-api-key": apiKeyVal,
+            },
+            body: JSON.stringify({ contract_source_code: fileContent }), // Convert the payload to JSON
+          }
+        );
+
+        // Check if the request was successful
+        if (response.ok) {
+          const data = await response.json();
+          console.log("Response from API:", data);
+        } else {
+          console.error("Error:", response.status, response.statusText);
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+    } else {
+      console.log("User is not signed in.");
     }
   };
 
