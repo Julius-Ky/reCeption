@@ -25,7 +25,7 @@ const Upload = () => {
 
         // Make the POST request
         const response = await fetch(
-          "https://98b5-2806-2a0-f12-8e60-e88f-9d11-582d-502e.ngrok-free.app/predict",
+          "https://f3a9-2806-2a0-f12-8e60-f940-ff2e-9731-372d.ngrok-free.app/predict",
           {
             method: "POST",
             headers: {
