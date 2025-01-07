@@ -9,6 +9,8 @@ import How from "../../components/how/How";
 const Upload = () => {
   const [currebtTab, setCurrentTab] = useState("upload");
   const { wallet, isSignedIn, accountId } = useWallet();
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [analysisResult, setAnalysisResult] = useState(null);
 
   const handleTabChange = (tab) => {
     setCurrentTab(tab);
@@ -16,8 +18,8 @@ const Upload = () => {
 
   const handleUpload = async (fileContent) => {
     if (isSignedIn) {
+      setIsAnalyzing(true);
       try {
-        console.log("Uploading...");
         const apiKeyVal = await wallet.fetchKey(accountId);
         console.log("API Key:", apiKeyVal, typeof apiKeyVal);
 
@@ -37,12 +39,16 @@ const Upload = () => {
         // Check if the request was successful
         if (response.ok) {
           const data = await response.json();
-          console.log("Response from API:", data);
+          console.log("Response data:", data);
+          setAnalysisResult(data);
+          setIsAnalyzing(false);
         } else {
           console.error("Error:", response.status, response.statusText);
+          setIsAnalyzing(false);
         }
       } catch (error) {
         console.error("An error occurred:", error);
+        setIsAnalyzing(false);
       }
     } else {
       console.log("User is not signed in.");
@@ -86,6 +92,19 @@ const Upload = () => {
             <FileUpload handleUpload={handleUpload} />
           ) : (
             <UrlSearch />
+          )}
+          {isAnalyzing && <p>Analysing your code...</p>}
+          {analysisResult && (
+            <div className={styles.result}>
+              <h3>Analysis Result:</h3>
+              <p>
+                <strong>Predicted class:</strong>{" "}
+                {analysisResult.predicted_class}
+              </p>
+              <p>
+                <strong>Confidence:</strong> {analysisResult.confidence}%
+              </p>
+            </div>
           )}
         </div>
       </div>

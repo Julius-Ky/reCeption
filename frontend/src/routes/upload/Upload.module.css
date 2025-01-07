@@ -63,3 +63,13 @@
 .active {
   background-color: var(--Accent-1);
 }
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.result h3 {
+  font-size: 2rem;
+}
