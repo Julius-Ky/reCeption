@@ -19,7 +19,7 @@ const Upload = () => {
       try {
         console.log("Uploading...");
         const apiKeyVal = await wallet.fetchKey(accountId);
-        console.log("API Key:", apiKeyVal);
+        console.log("API Key:", apiKeyVal, typeof apiKeyVal);
 
         // Prepare the request payload
         const payload = {
@@ -35,7 +35,9 @@ const Upload = () => {
               "Content-Type": "application/json",
               "x-api-key": apiKeyVal,
             },
-            body: JSON.stringify({ contract_source_code: fileContent }), // Convert the payload to JSON
+            body: JSON.stringify({
+              contract_source_code: "pragma solidity ^0.8.0; ",
+            }), // Convert the payload to JSON
           }
         );
 

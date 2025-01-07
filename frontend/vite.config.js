@@ -9,4 +9,7 @@ export default defineConfig({
     global: "globalThis",
     "process.env": {},
   },
+  server: {
+    port: 7081, // Set the port to 7081
+  },
 });
