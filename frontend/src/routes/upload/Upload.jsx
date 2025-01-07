@@ -21,23 +21,16 @@ const Upload = () => {
         const apiKeyVal = await wallet.fetchKey(accountId);
         console.log("API Key:", apiKeyVal, typeof apiKeyVal);
 
-        // Prepare the request payload
-        const payload = {
-          contract_source_code: fileContent, // Pass the file content as the value
-        };
-
         // Make the POST request
         const response = await fetch(
-          "https://4900-2806-2a0-f12-8e60-e88f-9d11-582d-502e.ngrok-free.app/predict",
+          "https://98b5-2806-2a0-f12-8e60-e88f-9d11-582d-502e.ngrok-free.app/predict",
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "x-api-key": apiKeyVal,
+              "x-api-key": "Df8qoDj4XCVVYaHsX27Nm4p1YuCLA2ZoowJ1bSipegw8",
             },
-            body: JSON.stringify({
-              contract_source_code: "pragma solidity ^0.8.0; ",
-            }), // Convert the payload to JSON
+            body: JSON.stringify({ contract_source_code: fileContent }), // Convert the payload to JSON
           }
         );
 
