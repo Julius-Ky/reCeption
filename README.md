@@ -105,12 +105,13 @@ participant NEAR
 User ->> reCEPTION: 1. Connect Wallet
 reCEPTION -->> User: Wallet Connected Confirmation
 User ->> reCEPTION: 2. Upload Smart Contract File
-reCEPTION ->> AI: 3. Pass Smart Contract for Analysis
-AI ->> reCEPTION: 4. Return Analysis Result
-reCEPTION -->> NEAR: Forward Contract for Signature Handling
+reCEPTION ->> NEAR: 3. Sign transaction
 NEAR -->> NEAR: Handles verification & fee charges for interactions
+reCEPTION ->> AI: 4. Pass Smart Contract for Analysis
+AI ->> reCEPTION: 5. Return Analysis Result
 NEAR -->> reCEPTION: Return Final Verification Result
-reCEPTION ->> User: 5. Display Analysis Result
+reCEPTION ->> User: 6. Display Analysis Result
+User -->> AI: Save contract data (Normal/Abnormal Classification)
 ```
 ### Platform Journey
 ![image](https://github.com/user-attachments/assets/503aca13-2084-4870-b88c-4acb323f1fcb)
