@@ -107,6 +107,7 @@ reCEPTION -->> User: Wallet Connected Confirmation
 User ->> reCEPTION: 2. Upload Smart Contract File
 reCEPTION ->> NEAR: 3. Sign transaction
 NEAR -->> NEAR: Handles verification & fee charges for interactions
+NEAR -->> reCEPTION: Return Final Verification Result
 reCEPTION ->> AI: 4. Pass Smart Contract for Analysis
 AI ->> reCEPTION: 5. Return Analysis Result
 reCEPTION ->> User: 6. Display Analysis Result
