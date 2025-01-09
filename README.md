@@ -71,10 +71,10 @@ User ->> E-Commerce: 1. Login
 E-Commerce -->> E-Commerce: Response the user info
 User ->> E-Commerce: 2. Product Purchase (Cryptocurrency)
 E-Commerce ->> reCEPTION: 3. Send Smart Contract (Payment)
-reCEPTION ->> AI: 4. Pass Smart Contract for Analysis
-AI ->> reCEPTION: 5. Return Analysis Result
-reCEPTION ->> NEAR: 6. Sign transaction
+reCEPTION ->> NEAR: 4. Sign transaction
 NEAR -->> NEAR: Handles verification & fee charges for interactions
+reCEPTION ->> AI: 5. Pass Smart Contract for Analysis
+AI ->> reCEPTION: 6. Return Analysis Result
 NEAR ->> reCEPTION: 7. Return Final Verification Result
 reCEPTION ->> User: 8. Return Safety Judgment
 User ->> E-Commerce: 9. Share whether to run (Check Box or Payment Approve)
