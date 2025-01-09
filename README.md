@@ -79,7 +79,7 @@ NEAR ->> reCEPTION: 7. Return Final Verification Result
 reCEPTION ->> User: 8. Return Safety Judgment
 User ->> E-Commerce: 9. Share whether to run (Check Box or Payment Approve)
 E-Commerce -->> E-Commerce: Response payment
-E-Commerce ->> AI: 10. Save contract data (Normal/Abnormal Classification)
+E-Commerce -->> AI: Save contract data (Normal/Abnormal Classification)
 ```
 
 1. **Login**: The user logs into the E-Commerce platform.
