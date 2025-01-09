@@ -64,19 +64,22 @@ sequenceDiagram
 participant User
 participant E-Commerce as E-Commerce (Platform)
 participant reCeption
+participant AI as AI Model
 participant NEAR
 
 User ->> E-Commerce: 1. Login
 E-Commerce -->> E-Commerce: Response the user info
 User ->> E-Commerce: 2. Product Purchase (Cryptocurrency)
 E-Commerce ->> reCeption: 3. Send Smart Contract (Payment)
-reCeption ->> NEAR: 4. Smart Contract Analysis (NEAR AI)
+reCeption ->> AI: 4. Pass Smart Contract for Analysis
+AI ->> reCeption: 5. Return Analysis Result
+reCeption ->> NEAR: 6. Forward Contract for Signature Handling
 NEAR -->> NEAR: Handles verification & fee charges for interactions
-NEAR ->> reCeption: 5. Return Analysis result
-reCeption ->> User: 6. Return Safety Judgment
-User ->> E-Commerce: 7. Share whether to run (Check Box or Payment Approve)
+NEAR ->> reCeption: 7. Return Final Verification Result
+reCeption ->> User: 8. Return Safety Judgment
+User ->> E-Commerce: 9. Share whether to run (Check Box or Payment Approve)
 E-Commerce -->> E-Commerce: Response payment
-E-Commerce ->> NEAR: 8. Save contract data (Normal/Abnormal Classification)
+E-Commerce ->> NEAR: 10. Save contract data (Normal/Abnormal Classification)
 ```
 
 1. **Login**: The user logs into the E-Commerce platform.
