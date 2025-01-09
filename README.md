@@ -73,6 +73,7 @@ User ->> E-Commerce: 2. Product Purchase (Cryptocurrency)
 E-Commerce ->> reCEPTION: 3. Send Smart Contract (Payment)
 reCEPTION ->> NEAR: 4. Sign transaction
 NEAR -->> NEAR: Handles verification & fee charges for interactions
+NEAR -->> reCEPTION: Return Final Verification Result
 reCEPTION ->> AI: 5. Pass Smart Contract for Analysis
 AI ->> reCEPTION: 6. Return Analysis Result
 reCEPTION ->> User: 7. Return Safety Judgment
