@@ -58,25 +58,25 @@ It is just pretrained at the moment with **`Reentrancy vulnerability`** so it le
 - [Vulnerabilities #3](https://www.4byte.directory/)
 
 ## Journey
-### reCEPTION Diagram
+### reCEPTION API Diagram
 ```mermaid
 sequenceDiagram
 participant User
 participant E-Commerce as E-Commerce (Platform)
-participant reCeption
+participant reCEPTION
 participant AI as AI Model
 participant NEAR
 
 User ->> E-Commerce: 1. Login
 E-Commerce -->> E-Commerce: Response the user info
 User ->> E-Commerce: 2. Product Purchase (Cryptocurrency)
-E-Commerce ->> reCeption: 3. Send Smart Contract (Payment)
-reCeption ->> AI: 4. Pass Smart Contract for Analysis
-AI ->> reCeption: 5. Return Analysis Result
-reCeption ->> NEAR: 6. Forward Contract for Signature Handling
+E-Commerce ->> reCEPTION: 3. Send Smart Contract (Payment)
+reCEPTION ->> AI: 4. Pass Smart Contract for Analysis
+AI ->> reCEPTION: 5. Return Analysis Result
+reCEPTION ->> NEAR: 6. Forward Contract for Signature Handling
 NEAR -->> NEAR: Handles verification & fee charges for interactions
-NEAR ->> reCeption: 7. Return Final Verification Result
-reCeption ->> User: 8. Return Safety Judgment
+NEAR ->> reCEPTION: 7. Return Final Verification Result
+reCEPTION ->> User: 8. Return Safety Judgment
 User ->> E-Commerce: 9. Share whether to run (Check Box or Payment Approve)
 E-Commerce -->> E-Commerce: Response payment
 E-Commerce ->> NEAR: 10. Save contract data (Normal/Abnormal Classification)
@@ -94,6 +94,24 @@ E-Commerce ->> NEAR: 10. Save contract data (Normal/Abnormal Classification)
    - **Response payment**: The E-Commerce platform internally processes the payment response.
 8. **Save contract data**: The E-Commerce platform saves the smart contract data on NEAR, categorized as normal/abnormal.
 
+### reCEPTION Diagram
+```mermaid
+sequenceDiagram
+participant User
+participant reCEPTION
+participant AI as AI Model
+participant NEAR
+
+User ->> reCEPTION: 1. Connect Wallet
+reCEPTION -->> User: Wallet Connected Confirmation
+User ->> reCEPTION: 2. Upload Smart Contract File
+reCEPTION ->> AI: 3. Pass Smart Contract for Analysis
+AI ->> reCEPTION: 4. Return Analysis Result
+reCEPTION -->> NEAR: Forward Contract for Signature Handling
+NEAR -->> NEAR: Handles verification & fee charges for interactions
+NEAR -->> reCEPTION: Return Final Verification Result
+reCEPTION ->> User: 5. Display Analysis Result
+```
 ### Platform Journey
 ![image](https://github.com/user-attachments/assets/503aca13-2084-4870-b88c-4acb323f1fcb)
 
