@@ -73,13 +73,13 @@ User ->> E-Commerce: 2. Product Purchase (Cryptocurrency)
 E-Commerce ->> reCEPTION: 3. Send Smart Contract (Payment)
 reCEPTION ->> AI: 4. Pass Smart Contract for Analysis
 AI ->> reCEPTION: 5. Return Analysis Result
-reCEPTION ->> NEAR: 6. Forward Contract for Signature Handling
+reCEPTION ->> NEAR: 6. Sign transaction
 NEAR -->> NEAR: Handles verification & fee charges for interactions
 NEAR ->> reCEPTION: 7. Return Final Verification Result
 reCEPTION ->> User: 8. Return Safety Judgment
 User ->> E-Commerce: 9. Share whether to run (Check Box or Payment Approve)
 E-Commerce -->> E-Commerce: Response payment
-E-Commerce ->> NEAR: 10. Save contract data (Normal/Abnormal Classification)
+E-Commerce ->> AI: 10. Save contract data (Normal/Abnormal Classification)
 ```
 
 1. **Login**: The user logs into the E-Commerce platform.
