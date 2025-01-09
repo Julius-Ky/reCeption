@@ -75,9 +75,8 @@ reCEPTION ->> NEAR: 4. Sign transaction
 NEAR -->> NEAR: Handles verification & fee charges for interactions
 reCEPTION ->> AI: 5. Pass Smart Contract for Analysis
 AI ->> reCEPTION: 6. Return Analysis Result
-NEAR ->> reCEPTION: 7. Return Final Verification Result
-reCEPTION ->> User: 8. Return Safety Judgment
-User ->> E-Commerce: 9. Share whether to run (Check Box or Payment Approve)
+reCEPTION ->> User: 7. Return Safety Judgment
+User ->> E-Commerce: 8. Share whether to run (Check Box or Payment Approve)
 E-Commerce -->> E-Commerce: Response payment
 E-Commerce -->> AI: Save contract data (Normal/Abnormal Classification)
 ```
@@ -109,7 +108,6 @@ reCEPTION ->> NEAR: 3. Sign transaction
 NEAR -->> NEAR: Handles verification & fee charges for interactions
 reCEPTION ->> AI: 4. Pass Smart Contract for Analysis
 AI ->> reCEPTION: 5. Return Analysis Result
-NEAR -->> reCEPTION: Return Final Verification Result
 reCEPTION ->> User: 6. Display Analysis Result
 User -->> AI: Save contract data (Normal/Abnormal Classification)
 ```
